@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        alert(`typeof (5)=${typeof (5)}\n typeof (5n)=${typeof (5n)}\n typeof ("5")=${typeof ("5")}\n typeof (true)=${typeof (true)}\ntypeof (variable)=${typeof (variable)}\n typeof ({})=${typeof ({})}\n typeof ([])=${typeof ([])}\n typeof (null)=${typeof (null)}\n  typeof (Symbol())=${typeof (Symbol())}`);
+
+        console.log(typeof (5));
+        console.log(typeof (5n));
+        console.log(typeof ("5"));
+        console.log(typeof (true));
+        console.log(typeof (n));
+        console.log(typeof ({}));
+        console.log(typeof ([]));
+        console.log(typeof (null));
+        console.log(typeof (Symbol()));
+
+        let text1 = prompt("Enter text1");
+        let text2 = prompt("Enter text2");
+        let text3 = prompt("Enter text3");
+        let text = `${text1}\n${text2}\n${text3}`;
+        alert(text);
+
+        let number = prompt("Enter number");
+        let textConv = number.toString().slice(0, 5);
+        alert(`${textConv.charAt(0)} ${textConv.charAt(1)} ${textConv.charAt(2)} ${textConv.charAt(3)} ${textConv.charAt(4)}`);
+
+        /* alert("alert");
+        confirm("confirm");
+        prompt("prompt"); */
+    </script>
+</body>
+
+</html>
