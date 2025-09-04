@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*///////////////////////////////////   4.1    /////////////////////////////////////////////////*/
+        const name = prompt("Enter your name");
+        alert( name ? `Hello, ${name}! How are you?`: prompt("Enter your name!!!!!!!!")); 
+
+        /*///////////////////////////////////   4.2    /////////////////////////////////////////////////*/
+        const number = prompt("Enter three numbers")
+        const splitNumber = number.toString().split('').map(Number);
+        alert(splitNumber[0]===splitNumber[1] && splitNumber[1]===splitNumber[1] ? "Всi цифри однаковi" : "Всi цифри не однаковi");  
+        alert(splitNumber[0]===splitNumber[1] || splitNumber[1]===splitNumber[2] || splitNumber[0]===splitNumber[2] ? "Серед цифр є однаковi" : "Серед цифр немає однакових"); 
+
+        /*///////////////////////////////////   4.3    /////////////////////////////////////////////////*/
+        let info = "";
+        const yearOfbirth = prompt("Your year of birth");
+        if (yearOfbirth) {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            info += `Ваш вік ${currentYear - yearOfbirth}`;
+        }
+        else {
+            alert("Шкода, що Ви не захотіли ввести свій(ю) дату народження");
+        }
+        info +=`\n`;
+
+        const city = prompt("Your city");
+        if (city) {
+            if (city === "Київ" || city === "Вашингтон" || city === "Лондон") {
+                info += `Ти живеш у столиці ${city}`;
+            }
+            else {
+                info += `Ти живеш у місті ${city}`;
+            }
+        }
+        else {
+            alert("Шкода, що Ви не захотіли ввести своє мiсто");
+        }
+        info +=`\n`;
+
+        const favoriteSport = prompt("Your favorite sport");
+        if (favoriteSport) {
+            if (favoriteSport === "футбол") {
+                info += "Круто! Хочеш стати Андрієм Шевченко";
+            }
+            else if (favoriteSport === "баскетбол") {
+                info += "Круто! Хочеш стати Святославом Михайлюк";
+            }
+            else if (favoriteSport === "бокс") {
+                info += "Круто! Хочеш стати Кличко";
+            }
+            else if (favoriteSport) {
+                info += "Займаєшся спортом це добре!";
+            }
+        }
+        else {
+            alert("Шкода, що Ви не захотіли ввести вид спорту");
+        }
+
+
+        alert(info?info:"Нiчого не введено");
+
+        /*///////////////////////////////////   4.4    /////////////////////////////////////////////////*/
+        let numOrStr = prompt('input number or string');
+        switch (true) {
+            case numOrStr === null:
+                alert("ви скасували");
+                break;
+            case numOrStr.trim() === '':
+                alert("Empty String");
+                break;
+            case isNaN(+numOrStr):
+                alert("number is Ba_NaN");
+                break;
+            default:
+                alert("OK!");
+        }
+        
+
+    </script>
+</body>
+
+</html>
