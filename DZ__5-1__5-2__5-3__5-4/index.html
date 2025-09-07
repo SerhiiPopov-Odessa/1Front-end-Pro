@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* ////////////////// DZ 5.1  ////////////////////////////// */
+        let result = "";
+        for (let i = 20; i <= 30; i += 0.5) {
+            result = result + i + " ";
+        }
+        console.log(result);
+
+        /* ////////////////// DZ 5.2  ////////////////////////////// */
+        let i = 10;
+        while (i <= 100) {
+            console.log(`${i} доларів коштує ${i * 26}`);
+            i += 10;
+        }
+
+        /* ////////////////// DZ 5.3  ////////////////////////////// */
+        const number = prompt("Enter the number");
+        let i = 1;
+        let x;
+        while (i <= 100) {
+
+            if ((x = i * i) <= number) {
+                console.log(`квадрат ${i} не перевищує числа N`);
+            }
+            else {
+                break;
+            }
+
+            i++;
+        }
+
+        /* ////////////////// DZ 5.4  ////////////////////////////// */
+        const number = prompt("Enter the number");
+        let i = 1;
+        let x = 0;
+        while (i <= number) {
+            //console.log(number / i);
+            if (Number.isInteger(number / i) === true) {
+                x++;
+            }
+            i++;
+        }
+        if (x === 2) {
+            console.log("Число - " + number + " просте");
+        }
+        else {
+            console.log("Число - " + number + " не просте");
+        }
+    </script>
+</body>
+
+</html>
