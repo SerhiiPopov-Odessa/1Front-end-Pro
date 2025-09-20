@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* ////////////////// DZ 8.1  ////////////////////////////// */
+        function createCounter() {
+            let count = 0;
+
+            return function (num) {
+                return count += num;
+            };
+        }
+
+        const sum = createCounter();
+        console.log(sum(4));
+        console.log(sum(6));
+
+
+
+        /* ////////////////// DZ 8.2  ////////////////////////////// */
+        function name(x) {
+            return function (y) {
+                return x * y;
+            };
+        }
+        console.log(name(5)(2));
+
+
+
+
+        /* ////////////////// DZ 8.3  ////////////////////////////// */
+        (function () {
+            for (let i = 1; i <= 10; i++) {
+                //let userInput = +prompt("Ввести число більше 100");
+                let userInput = prompt("Ввести число більше 100");
+                let number = Number(userInput);
+
+                if (number <= 100) {
+                    alert("Ви ввели  число меньше або равно <= 100");
+                    continue;
+                }
+
+                if (isNaN(userInput)) {
+                    alert("Ви ввели не число.");
+                    console.log(userInput);
+                    return userInput;
+                }
+
+                if (number > 100) {
+                    alert("Ви ввели  число бiльше > 100");
+                    console.log(userInput);
+                    return number;
+                }
+
+            }
+        })();
+    </script>
+</body>
+
+</html>
