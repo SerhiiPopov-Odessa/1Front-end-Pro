@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* ////////////////// DZ 9.1  ////////////////////////////// */
+        let ladder = {
+            count: 0,
+            up: function () { // підніматиме вас на одну сходинку
+                this.count++;
+                return this;
+            },
+            down: function () { // опускатиме вас на одну сходинку
+                this.count--;
+                return this;
+            },
+            showStep: function () { // показує поточну сходинку
+                console.log(this.count);
+                return this;
+            }
+        };
+
+
+        ladder.up().up().down().showStep();
+
+
+    </script>
+</body>
+
+</html>
