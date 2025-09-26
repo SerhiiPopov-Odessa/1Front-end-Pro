@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* ////////////////// DZ 10.1  ////////////////////////////// */
+        function salarySum(n = 0) {
+            count = n;
+            sum = 0;
+            if (!company.hasOwnProperty(Object.keys(company)[count])) {
+                return 0;
+            }
+            else {
+                if (Array.isArray(Object.values(company)[count])) {
+                    sum += Object.values(company)[count].reduce((accumulator, currentItem) => { return accumulator + currentItem.salary }, 0);
+                }
+                else if (Array.isArray(Object.values(Object.values(company)[count]))) {
+                    sum += Object.values(Object.values(company)[count]).reduce((acc, arr) => {
+                        return acc + arr.reduce((a, b) => a + b.salary, 0);
+                    }, 0);
+                }
+                return sum + salarySum(count + 1);
+            }
+        }
+        console.log(salarySum())
+
+    </script>
+</body>
+
+</html>
