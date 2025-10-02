@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблиця піфагора</title>
+</head>
+
+<body>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+           
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 4px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        const h2 = document.createElement('h2');
+        h2.textContent = "Таблиця піфагора"
+        const newTable = document.createElement('table');
+
+        for (let i = 1; i <= 11; i++) {
+            const newRow = document.createElement('tr');
+
+            for (let j = 1; j <= 11; j++) {
+                let newCell;
+                if (i === 1 && j === 1) {
+                    newCell = document.createElement('th');
+                    newCell.textContent = "*";
+                    newCell.style.background = 'aquamarine';
+                }
+                else if (i === 1 || j === 1) {
+                    newCell = document.createElement('th');
+                    newCell.style.background = 'aquamarine';
+                    if (i === 1) {
+                        newCell.textContent = j-1;
+                    }
+                    else {
+                        newCell.textContent = i-1;
+                    }
+                }
+                else {
+                    newCell = document.createElement('td');
+                    newCell.textContent = (i-1)*(j-1);
+                }
+
+                newRow.appendChild(newCell);
+            }
+
+            newTable.appendChild(newRow);
+        }
+        document.body.appendChild(h2);
+        document.body.appendChild(newTable);
+    </script>
+
+</body>
+
+</html>

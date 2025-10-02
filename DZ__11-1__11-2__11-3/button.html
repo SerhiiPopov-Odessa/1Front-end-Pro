@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ButtonChangeColorText</title>
+</head>
+
+<body>
+    <style>
+        .newColorText {
+            color: blueviolet;
+        }
+    </style>
+
+    <div>
+        <h2 class="ChangeColorText">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius, cumque.</h2>
+        <button class="buttonChangeColorText">Change text color</button>
+    </div>
+
+
+    <script>
+        const button = document.querySelector(".buttonChangeColorText");
+        const text = document.querySelector(".ChangeColorText");
+        function handleClick(event) {
+            text.classList.toggle('newColorText'); 
+            //button.removeEventListener('click', handleClick); 
+        }
+        button.addEventListener('click', handleClick);
+        
+    </script>
+
+</body>
+
+</html>
