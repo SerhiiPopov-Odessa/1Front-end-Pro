@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RandomPicture</title>
+</head>
+
+<body>
+    <style>
+
+    </style>
+
+    <div>
+        <img class="img" src="img/1.jpg" alt="RandomPicture">
+    </div>
+
+
+    <script>
+        const image = document.querySelector(".img");
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function delayedLoop() {
+            for (let i = 0; i < 100; i++) {
+                let x = Math.floor(Math.random() * 3) + 1
+                image.setAttribute("src", `img/${x}.jpg`);
+                // Пауза на 1 секунду (1000 миллисекунд)
+                await sleep(2000);
+            }
+        }
+
+        delayedLoop();
+
+    </script>
+
+</body>
+
+</html>
