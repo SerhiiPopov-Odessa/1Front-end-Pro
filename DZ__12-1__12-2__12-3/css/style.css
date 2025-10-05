@@ -1,0 +1,88 @@
+.buttonContainer,
+.buttonStyle,
+.containerInput input[type="text"],
+.containerInput input[type="text"]::placeholder {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: italic;
+    font-variation-settings:
+        "wdth" 100;
+
+}
+
+.buttonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttonContainer ol {
+  list-style-type: decimal;
+}
+.buttonContainer ol{
+    list-style-position: inside;
+    padding: 0;
+}
+
+.buttonContainer ol li {
+    color: blueviolet;
+    margin-bottom: 1rem;
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+
+.buttonContainer li button {
+  float: right;
+}
+
+
+
+.buttonContainer ol li>button {
+    margin-left: 1rem;
+}
+
+.buttonStyle {
+    margin-right: 50px;
+    color: blueviolet;
+    background-color: aquamarine;
+    min-width: 6rem;
+    min-height: 2rem;
+    border-radius: .25rem;
+    border: none;
+    text-align: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.inputStyle {
+    color: blueviolet;
+
+    min-height: 2rem;
+    border-radius: .25rem;
+    border-color: aqua;
+    text-align: center;
+    padding: 0 10px;
+
+}
+
+.buttonStyle:active {
+    background-color: #af37d7;
+    transform: translateY(2px);
+}
+
+.containerInput {
+    display: flex;
+    align-items: center;
+}
+
+.containerInput input[type="text"] {
+    margin-right: 10px;
+}
+
+.containerInput input[type="text"]::placeholder {
+    color: blueviolet;
+}

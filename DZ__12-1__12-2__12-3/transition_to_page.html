@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition to page</title>
+</head>
+
+<body>
+    <style>
+        .buttonContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .buttonStyle {
+            margin-right: 50px;
+            color: blueviolet;
+            background-color: aquamarine;
+            min-width: 150px;
+            min-height: 50px;
+            border-radius: 4px;
+            border: none;
+            text-align: center;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        .buttonStyle:active {
+            background-color: #af37d7;
+            transform: translateY(2px);
+        }
+    </style>
+
+    <div class="buttonContainer">
+        <button class="newPage buttonStyle">Enter the page name</button>
+        <button class="goNewPage buttonStyle">Go to a new page</button>
+    </div>
+
+
+    <script>
+        let newPage="https://www.";
+        const buttonContainer = document.querySelector(".buttonContainer");
+        buttonContainer.addEventListener('click', handleClick);
+        function handleClick(event) {
+            if (event.target.tagName === "BUTTON") {
+                if (event.target.classList.contains('newPage')) { 
+                    newPage += prompt("Enter the page name https://www.");
+                    alert("Введено сторiнку "+newPage);
+                }
+                if (event.target.classList.contains('goNewPage')) { 
+                    window.location.href = newPage;
+                    buttonContainer.removeEventListener('click', handleClick);
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

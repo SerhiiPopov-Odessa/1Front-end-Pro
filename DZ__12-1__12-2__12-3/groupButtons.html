@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group of buttons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+    
+
+    <div class="buttonContainer">
+        <button class="butt buttonStyle">Кнопка 1</button>
+        <button class="butt buttonStyle">Кнопка 2</button>
+        <button class="butt buttonStyle">Кнопка 3</button>  
+    </div>
+
+
+    <script>
+        const buttonContainer = document.querySelector(".buttonContainer");
+        buttonContainer.addEventListener('click', handleClick);
+        function handleClick(event) {
+            if (event.target.tagName === "BUTTON") {
+                if (event.target.classList.contains('butt') ) { 
+                    alert("Клікнуто на кнопцi: " + event.target.textContent);
+                }
+            }
+            //buttonContainer.removeEventListener('click', handleClick);
+        }
+    </script>
+
+</body>
+
+</html>

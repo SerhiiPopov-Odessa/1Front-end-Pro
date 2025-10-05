@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+
+    <div class="buttonContainer">
+        <ol class="buttonContainer__ul">
+            <!-- <li><button class="deleteTask buttonStyle">Видалити</button></li> -->
+        </ol>
+        <div class="containerInput">
+            <input class="inputText inputStyle" type="text" placeholder="Додати нове завдання">
+            <button class="addTask buttonStyle">Додати</button>
+        </div>
+    </div>
+
+
+    <script>
+        const buttonContainer = document.querySelector(".buttonContainer");
+        const buttonContainer__ul = document.querySelector(".buttonContainer__ul");
+        buttonContainer.addEventListener('click', handleClick);
+        function handleClick(event) {
+            if (event.target.tagName === "BUTTON") {
+                if (event.target.classList.contains('addTask')) {
+                    const create_li = document.createElement('li');
+                    create_li.textContent = document.querySelector(".inputText").value;
+                    const create_button = document.createElement('button');
+                    create_button.textContent = "Видалити";
+                    create_button.classList.add('deleteTask', 'buttonStyle');
+                    create_li.appendChild(create_button);
+                    buttonContainer__ul.appendChild(create_li);
+                }
+                if (event.target.classList.contains('deleteTask')) {
+                    /* removeElement = event.target.parentElement;
+                    removeParentElement = removeElement.parentNode;
+                    removeParentElement.removeChild(removeElement); */
+
+                    event.target.parentElement.remove();
+
+                    /* const liElement = event.target.closest('li');
+                    if (liElement) {
+                        console.log(liElement);
+                    } */
+                }
+            }
+            //buttonContainer.removeEventListener('click', handleClick);
+        }
+    </script>
+
+</body>
+
+</html>
