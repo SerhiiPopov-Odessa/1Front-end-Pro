@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form validation</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+
+    <form action="#" method="post" class="id_form_help_message buttonContainer formStyle">
+        <h2>We would like to help you</h2>
+
+        <input type="text" name="name" placeholder="Name" class="name_input inputStyle">
+        <p id="message_input_name"></p><br><br>
+
+        <textarea name="name_textarea_message" rows="4" placeholder="Message"
+            class="textarea_input_message inputStyle"></textarea>
+        <p id="message_textarea"></p><br><br>
+
+        <label for="phone_number"> How to answer you? </label> <br>
+        <input type="tel" id="phone_number" name="phone_number" placeholder="Phone number"
+            class="phone_number_input inputStyle">
+        <p id="message_phone"></p><br><br>
+
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" class="email_input inputStyle">
+        <p id="message_email"></p><br><br>
+
+        <button type="submit" class="buttonStyle">Send message</button>
+    </form>
+
+    <script>
+        const phoneRegex = new RegExp(/^(\+380)\d{9}$/);
+        const emailRegex = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
+        /* const emailRegex = /\\S+@\\S+\\.\\S+/; */
+
+        const name_input = document.querySelector(".name_input")
+        const message_input_name = document.getElementById('message_input_name');
+
+        const textarea_input_message = document.querySelector(".textarea_input_message")
+        const message_textarea = document.getElementById('message_textarea');
+
+
+        const phone_number_input = document.querySelector(".phone_number_input")
+        const message_phone = document.getElementById('message_phone');
+
+        const email_input = document.querySelector(".email_input")
+        const message_email = document.getElementById('message_email');
+
+        const form = document.querySelector(".id_form_help_message");
+        form.addEventListener('submit', formValidation);
+        function formValidation(event) {
+
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            const name = formData.get('name');
+            const name_trim = name.trim()
+
+            const name_textarea_message = formData.get('name_textarea_message');
+
+            const phone_number = formData.get('phone_number');
+            const phone_number_name_trim = phone_number.trim()
+
+            const email = formData.get('email');
+            const email_name_trim = email.trim();
+
+            if (name_trim) {
+                message_input_name.textContent = '';
+                name_input.style.border = '2px solid green';
+            }
+            else {
+                message_input_name.textContent = '❌ Поле обовязкове для заповнення';
+                message_input_name.style.color = 'red';
+                name_input.style.border = '2px solid red';
+            }
+
+            if (!name_textarea_message || name_textarea_message.length < 5) {
+                message_textarea.textContent = '❌ Введено меньше 5 символов';
+                message_textarea.style.color = 'red';
+                textarea_input_message.style.border = '2px solid red';
+            }
+            else {
+                message_textarea.textContent = '';
+                textarea_input_message.style.border = '2px solid green';
+            }
+
+            if (phoneRegex.test(phone_number_name_trim)) {
+                message_phone.textContent = '✅ Корректный номер телефона';
+                message_phone.style.color = 'green';
+                phone_number_input.style.border = '2px solid green';
+            }
+            else {
+                message_phone.textContent = '❌ Номер должен начинаться с +380 и содержать 9 цифр';
+                message_phone.style.color = 'red';
+                phone_number_input.style.border = '2px solid red';
+            }
+
+            if (emailRegex.test(email_name_trim)) {
+                message_email.textContent = '✅ Email адреса правильна.';
+                message_email.style.color = 'green';
+                email_input.style.border = '2px solid green';
+            }
+            else {
+                message_email.textContent = '❌ Неправильний формат email адреси.';
+                message_email.style.color = 'red';
+                email_input.style.border = '2px solid red';
+            }
+        }
+
+
+
+
+
+
+
+        //buttonContainer.addEventListener('click', handleClick);
+        function handleClick(event) {
+            if (event.target.tagName === "BUTTON") {
+                if (event.target.classList.contains('addTask')) {
+                    const create_li = document.createElement('li');
+                    create_li.textContent = document.querySelector(".inputText").value;
+                    const create_button = document.createElement('button');
+                    create_button.textContent = "Видалити";
+                    create_button.classList.add('deleteTask', 'buttonStyle');
+                    create_li.appendChild(create_button);
+                    buttonContainer__ul.appendChild(create_li);
+                }
+                if (event.target.classList.contains('deleteTask')) {
+                    /* removeElement = event.target.parentElement;
+                    removeParentElement = removeElement.parentNode;
+                    removeParentElement.removeChild(removeElement); */
+
+                    event.target.parentElement.remove();
+
+                    /* const liElement = event.target.closest('li');
+                    if (liElement) {
+                        console.log(liElement);
+                    } */
+                }
+            }
+            //buttonContainer.removeEventListener('click', handleClick);
+        }
+    </script>
+
+</body>
+
+</html>
