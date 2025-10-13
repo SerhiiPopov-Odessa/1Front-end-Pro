@@ -115,39 +115,6 @@
             }
         }
 
-
-
-
-
-
-
-        //buttonContainer.addEventListener('click', handleClick);
-        function handleClick(event) {
-            if (event.target.tagName === "BUTTON") {
-                if (event.target.classList.contains('addTask')) {
-                    const create_li = document.createElement('li');
-                    create_li.textContent = document.querySelector(".inputText").value;
-                    const create_button = document.createElement('button');
-                    create_button.textContent = "Видалити";
-                    create_button.classList.add('deleteTask', 'buttonStyle');
-                    create_li.appendChild(create_button);
-                    buttonContainer__ul.appendChild(create_li);
-                }
-                if (event.target.classList.contains('deleteTask')) {
-                    /* removeElement = event.target.parentElement;
-                    removeParentElement = removeElement.parentNode;
-                    removeParentElement.removeChild(removeElement); */
-
-                    event.target.parentElement.remove();
-
-                    /* const liElement = event.target.closest('li');
-                    if (liElement) {
-                        console.log(liElement);
-                    } */
-                }
-            }
-            //buttonContainer.removeEventListener('click', handleClick);
-        }
     </script>
 
 </body>
