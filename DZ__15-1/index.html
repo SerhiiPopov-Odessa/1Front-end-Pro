@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ToDoList</h1>
+        <form class="form js--form">
+            <input id="form__input" type="text" name="value" required class="form__input js--form__input">
+            <button class="form__btn_add_todo">Додати</button>
+        </form>
+        <ul class="js--todos-wrapper">
+            <!-- <li class="todo-item">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li>
+            <li class="todo-item todo-item--checked">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li> -->
+        </ul>
+
+        <script>
+            const form = document.querySelector(".form");
+            const todos_wrapper_ul = document.querySelector(".js--todos-wrapper");
+
+            let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+            function saveTodos() {
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+
+            function renderTodos() {
+                todos_wrapper_ul.innerHTML = '';
+                todos.forEach((todo, index) => {
+                    newTodos(todo);
+                });
+            }
+
+            function newTodos(todo = false) {
+                const create_li = document.createElement('li');
+                create_li.className = 'todo-item';
+                const create_checkbox = document.createElement('input');
+                create_checkbox.type = 'checkbox';
+                if (todo.checked) {
+                    create_checkbox.checked = true;
+                    create_li.classList.add('todo-item--checked');
+                }
+                else {
+                    create_checkbox.checked = false;
+                }
+                const create_span = document.createElement('span');
+                if (todo) {
+                    create_span.textContent = todo.text;
+                }
+                else {
+                    create_span.textContent = document.querySelector(".form__input").value.trim();
+                }
+                create_span.classList.add('todo-item__description');
+                const create_button = document.createElement('button');
+                create_button.textContent = "Видалити";
+                create_button.classList.add('todo-item__delete');
+                create_li.append(create_checkbox, create_span, create_button);
+                todos_wrapper_ul.appendChild(create_li);
+            }
+
+            todos_wrapper_ul.addEventListener('click', todos_wrapper_ul_click);
+            function todos_wrapper_ul_click(event) {
+                // Найдём ближайший LI (если кликнули внутри li)
+                const li = event.target.closest('li');
+                if (!li || !todos_wrapper_ul.contains(li)) return; // клик вне задач — игнорируем
+
+                // Вычислим индекс li в списке UL
+                const index = Array.from(todos_wrapper_ul.children).indexOf(li);
+                if (index === -1) return;
+
+                if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
+                    if (event.target.checked) {
+                        event.target.parentElement.classList.add('todo-item--checked');
+                        todos[index].checked = true;
+                    } else {
+                        event.target.parentElement.classList.remove('todo-item--checked');
+                        todos[index].checked = false;
+                    }
+                    saveTodos();
+                }
+                if (event.target.tagName === 'BUTTON' && event.target.classList.contains('todo-item__delete')) {
+                    event.target.parentElement.remove();
+                    todos.splice(index, 1);
+                    saveTodos();
+                }
+                //todos_wrapper_ul.removeEventListener('click', todos_wrapper_ul_click);
+            }
+
+            form.addEventListener('click', form_click_add_todo);
+            function form_click_add_todo(event) {
+                event.preventDefault();
+                if (event.target.tagName === "BUTTON") {
+                    if (event.target.classList.contains('form__btn_add_todo')) {
+                        const text = document.querySelector(".form__input").value.trim();
+                        if (!text) {
+                            alert('Введите текст')
+                            return
+                        };
+                        newTodos()
+                        todos.push({ text, checked: false });
+                        saveTodos();
+                        document.querySelector(".form__input").value = "";
+                    }
+                }
+                //form.removeEventListener('click', form_click_add_todo);
+            }
+            renderTodos();
+        </script>
+    </div>
+</body>
+
+</html>
