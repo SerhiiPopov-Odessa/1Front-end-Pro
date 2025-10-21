@@ -28,10 +28,18 @@
                 <button class="todo-item__delete">Видалити</button>
             </li> -->
         </ul>
+        <template class="template-new-todo-item">
+            <li class="todo-item">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li>
+        </template>
 
         <script>
+            const templateNewTodoItem = document.querySelector(".template-new-todo-item");
             const form = document.querySelector(".form");
-            const todos_wrapper_ul = document.querySelector(".js--todos-wrapper");
+            const todosWrapperUl = document.querySelector(".js--todos-wrapper");
 
             let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
@@ -40,47 +48,41 @@
             }
 
             function renderTodos() {
-                todos_wrapper_ul.innerHTML = '';
+                todosWrapperUl.innerHTML = '';
                 todos.forEach((todo, index) => {
                     newTodos(todo);
                 });
             }
 
             function newTodos(todo = false) {
-                const create_li = document.createElement('li');
-                create_li.className = 'todo-item';
-                const create_checkbox = document.createElement('input');
-                create_checkbox.type = 'checkbox';
+                const cloneTemplateNewTodoItem = templateNewTodoItem.content.cloneNode(true);
+                const checkboxTodoItem = cloneTemplateNewTodoItem.querySelector('input[type="checkbox"]');
+                const liTodoItem = cloneTemplateNewTodoItem.querySelector('li.todo-item');
+                const spanTodoItem = cloneTemplateNewTodoItem.querySelector('span.todo-item__description');
                 if (todo.checked) {
-                    create_checkbox.checked = true;
-                    create_li.classList.add('todo-item--checked');
+                    checkboxTodoItem.checked = true;
+                    liTodoItem.classList.add('todo-item--checked');
                 }
                 else {
-                    create_checkbox.checked = false;
+                    checkboxTodoItem.checked = false;
                 }
-                const create_span = document.createElement('span');
                 if (todo) {
-                    create_span.textContent = todo.text;
+                    spanTodoItem.textContent = todo.text;
                 }
                 else {
-                    create_span.textContent = document.querySelector(".form__input").value.trim();
+                    spanTodoItem.textContent = document.querySelector(".form__input").value.trim();
                 }
-                create_span.classList.add('todo-item__description');
-                const create_button = document.createElement('button');
-                create_button.textContent = "Видалити";
-                create_button.classList.add('todo-item__delete');
-                create_li.append(create_checkbox, create_span, create_button);
-                todos_wrapper_ul.appendChild(create_li);
+                todosWrapperUl.append(cloneTemplateNewTodoItem);
             }
 
-            todos_wrapper_ul.addEventListener('click', todos_wrapper_ul_click);
-            function todos_wrapper_ul_click(event) {
+            todosWrapperUl.addEventListener('click', todosWrapperUlClick);
+            function todosWrapperUlClick(event) {
                 // Найдём ближайший LI (если кликнули внутри li)
                 const li = event.target.closest('li');
-                if (!li || !todos_wrapper_ul.contains(li)) return; // клик вне задач — игнорируем
+                if (!li || !todosWrapperUl.contains(li)) return; // клик вне задач — игнорируем
 
                 // Вычислим индекс li в списке UL
-                const index = Array.from(todos_wrapper_ul.children).indexOf(li);
+                const index = Array.from(todosWrapperUl.children).indexOf(li);
                 if (index === -1) return;
 
                 if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
@@ -98,11 +100,11 @@
                     todos.splice(index, 1);
                     saveTodos();
                 }
-                //todos_wrapper_ul.removeEventListener('click', todos_wrapper_ul_click);
+                //todosWrapperUl.removeEventListener('click', todosWrapperUl_click);
             }
 
-            form.addEventListener('click', form_click_add_todo);
-            function form_click_add_todo(event) {
+            form.addEventListener('click', formClickAddTodo);
+            function formClickAddTodo(event) {
                 event.preventDefault();
                 if (event.target.tagName === "BUTTON") {
                     if (event.target.classList.contains('form__btn_add_todo')) {
