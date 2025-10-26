@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Годиник</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    
+
+
+    <div class="buttonContainer formStyle">
+        <h2>Годиник</h2>
+        <p class="timer_tablo"></p>
+        <button class="timer_button_start buttonStyle">Start time</button><br>
+        <button class="timer_button_stop buttonStyle">Stop time</button>
+    </div>
+
+    <script>
+        const timerTablo = document.querySelector(".timer_tablo");
+        const timerButtonStart = document.querySelector(".timer_button_start");
+        const timerButtonStop = document.querySelector(".timer_button_stop");
+
+        class Timer {
+            //стрелочная функция не создаёт своего this,
+            //она наследует this из внешнего контекста — в данном случае из конструктора класса,
+            //а там this указывает именно на экземпляр Timer 
+
+            //self; 
+            constructor() {
+                this.intervalId = null;
+                //self = this;
+                timerButtonStart.addEventListener('click', () => this.startTimer());
+                // timerButtonStop.addEventListener('click', self.stopTimer); 
+                timerButtonStop.addEventListener('click', () => this.stopTimer());
+            }
+            startTimer() {
+                if (this.intervalId) return;
+                this.intervalId = setInterval(() => this.updateTimer(), 1000);
+                this.updateTimer();
+            }
+            stopTimer() {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+            updateTimer() {
+                const dateNew = new Date();
+                const hours = dateNew.getHours().toString().padStart(2, "0");
+                const minutes = dateNew.getMinutes().toString().padStart(2, "0");
+                const seconds = dateNew.getSeconds().toString().padStart(2, "0");
+                timerTablo.textContent = `${hours}:${minutes}:${seconds}`;
+            }
+        }
+        new Timer();
+    </script>
+
+</body>
+
+</html>

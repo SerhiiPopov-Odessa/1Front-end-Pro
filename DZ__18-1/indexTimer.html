@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таймер відліку</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+
+
+
+    <div class="buttonContainer formStyle">
+        <h2>Таймер відліку</h2>
+
+        <label for="time">Введiть початок таймера</label> <br>
+        <input type="time" id="time" name="time" class="timer_input inputStyle"><br>
+        <p class="timer_tablo"></p><br>
+        <button class="timer_button_start buttonStyle">Start time</button><br>
+        <button class="timer_button_stop buttonStyle">Stop time</button>
+    </div>
+
+    <script>
+        const timerInput = document.querySelector(".timer_input");
+        const timerTablo = document.querySelector(".timer_tablo");
+        const timerButtonStart = document.querySelector(".timer_button_start");
+        const timerButtonStop = document.querySelector(".timer_button_stop");
+        
+        class Timer {
+            //стрелочная функция не создаёт своего this,
+            //она наследует this из внешнего контекста — в данном случае из конструктора класса,
+            //а там this указывает именно на экземпляр Timer 
+
+            //self; 
+            constructor() {
+                this.intervalId = null;
+                this.translateIntoSeconds = 0;
+                //self = this;
+                timerButtonStart.addEventListener('click', () => this.startTimer());
+                // timerButtonStop.addEventListener('click', self.stopTimer); 
+                timerButtonStop.addEventListener('click', () => this.stopTimer());
+            }
+            startTimer() {
+                if (this.intervalId) return;
+                const inputValue = timerInput.value;
+                const parts = inputValue.split(":");
+                let [minutes, seconds] = parts.map(Number);
+                this.translateIntoSeconds = minutes * 60 + seconds;
+                this.intervalId = setInterval(() => {
+                    this.translateIntoSeconds--;
+                    if (this.translateIntoSeconds <= 0) {
+                        this.stopTimer();
+                        this.translateIntoSeconds = 0;
+                        this.updateTimer();
+                        timerTablo.textContent = " Время вышло ❗ ⏰"
+                    } else {
+                        this.updateTimer();
+                    }
+                }, 1000);
+            }
+
+            stopTimer() {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+
+            updateTimer() {
+                const minutes = Math.floor(this.translateIntoSeconds / 60)
+                    .toString()
+                    .padStart(2, "0");
+                const seconds = (this.translateIntoSeconds % 60)
+                    .toString()
+                    .padStart(2, "0");
+
+                timerInput.value = `${minutes}:${seconds}`;
+            }
+        }
+        new Timer();
+    </script>
+
+</body>
+
+</html>
