@@ -1,0 +1,88 @@
+.buttonContainer,
+.buttonStyle,
+.containerInput input[type="text"],
+.containerInput input[type="text"]::placeholder {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: italic;
+    font-variation-settings:
+        "wdth" 100;
+
+}
+
+.formStyle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 40%;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+    background-color: #f5f7fb;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+}
+
+.formStyle h2 {
+    color: #ff4d79;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.formStyle label {
+    font-size: 13px;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.buttonContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.buttonStyle {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 70%;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+.buttonStyle:active {
+    background-color: #af37d7;
+    transform: translateY(2px);
+}
+
+.formStyle input,
+  .formStyle textarea {
+    text-align: left;
+    width: 70%;
+    padding: 10px;
+    /* margin-bottom: 15px; */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .formStyle input:focus,
+  .formStyle textarea:focus {
+    border-color: #504dff;
+  }
