@@ -1,0 +1,153 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 50%;
+    border: none;
+}
+
+.centering_element_display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slider {
+    overflow: hidden;
+    /* border: 2px solid rgb(47, 78, 255); */
+    border: none;
+    position: relative;
+    width: 30vw;
+    height: 40vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+
+.slider-item {
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    transition: offset-distance 2s;
+    offset-anchor: -5% -5%;
+    offset-path: path("M -1000 0 L 1000 0");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.slider-item .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.btn-prev {
+    position: absolute;
+    top: 40%;
+    left: -12%;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+
+    color: #3d3d3d;
+    background-color: #90dc9e;
+    border: none;
+    border-radius: 50%;
+    opacity: 0.8;
+
+}
+
+.btn-next {
+    position: absolute;
+    top: 40%;
+    right: -12%;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+
+    color: #3d3d3d;
+    background-color: #90dc9e;
+    border: none;
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.btn-next:hover,
+.btn-prev:hover {
+    background: #46a358;
+    color: white;
+}
+
+.btn-dots {
+    position: absolute;
+    bottom: -20%;
+    left: 0;
+    right: 0;
+    padding: 0;
+
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+
+    opacity: 0.8;
+
+}
+
+.btn-dots li {
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+
+.btn-dots li:last-child {
+    margin-right: 0;
+}
+
+.btn-dots li button:before {
+    display: none;
+}
+
+.btn-dots li button {
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 89%;
+    color: #3d3d3d;
+    background-color: #90dc9e;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-dots li button:hover {
+    background: #46a358;
+    color: white;
+}
+
+.btn-dots li.active-btn-dots button {
+    background: #46a358;
+    color: white;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+button:hover:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}

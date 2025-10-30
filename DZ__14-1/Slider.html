@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <section>
+        <div class="container centering_element_display">
+            <div class="slider-control">
+                <div class="slider">
+                    <div class="slider-item">
+                        <img class="img" src="img/1.jpg" alt="RandomPicture">
+                    </div>
+                    <div class="slider-item">
+                        <img class="img" src="img/2.jpg" alt="RandomPicture">
+                    </div>
+                    <div class="slider-item">
+                        <img class="img" src="img/3.jpg" alt="RandomPicture">
+                    </div>
+                    <div class="slider-item">
+                        <img class="img" src="img/4.jpg" alt="RandomPicture">
+                    </div>
+                </div>
+                <!-- <button class="btn-prev" disabled="">◀</button>
+                <button class="btn-next">▶</button> -->
+                <!-- <ul class="btn-dots">
+                    <li class="active-btn-dots"><button>1</button></li>
+                    <li><button>2</button></li>
+                    <li><button>3</button></li>
+                    <li><button>4</button></li>
+                </ul> -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        let firstIndexPositSlider = 0;
+        const sliderControl = document.querySelector('.slider-control');
+        const slider = document.querySelector('.slider');
+        const sliderItems = document.querySelectorAll('.slider-item');
+
+        // Инициализация кнопок ◀ ▶
+        const newSliderControl = document.createElement('div');
+        const newUlBtnDots = document.createElement('ul');
+        newUlBtnDots.classList.add('btn-dots');
+        const btnPrev = document.createElement('button');
+        btnPrev.textContent = '◀';
+        btnPrev.classList.add('btn-prev');
+        const btnNext = document.createElement('button');
+        btnNext.textContent = '▶';
+        btnNext.classList.add('btn-next')
+        // Инициализация BtnDots
+        for (const [i, item] of sliderItems.entries()) {
+            const newLi = document.createElement('li');
+            const newButtonDots = document.createElement('button');
+            if (i === 0) {
+                sliderItems[0].classList.add("active-slide");
+                newLi.classList.add('active-btn-dots');
+                btnPrev.disabled = true;
+                sliderItems[0].style.offsetDistance = '50%';
+            }
+            else {
+                item.style.offsetDistance = '100%';
+            }
+            newButtonDots.textContent = i + 1;
+            newLi.appendChild(newButtonDots);
+            newUlBtnDots.appendChild(newLi);
+        }
+        sliderControl.append(btnPrev, btnNext, newUlBtnDots);
+
+        newUlBtnDots.addEventListener('click', ulBtnDotsClick);
+        function ulBtnDotsClick(event) {
+            if (event.target.tagName === "BUTTON") {
+                // 1. Находим ближайший li, по которому кликнули
+                const clickedLi = event.target.closest('li');
+                if (!clickedLi) return; // клик не по элементу списка — выходим
+                // 2. Находим родительский ul
+                const parentUl = clickedLi.closest('ul');
+                if (!parentUl) return; // на случай, если li вне списка
+                // 3. Получаем все li внутри этого ul
+                const children = Array.from(parentUl.children);
+                // 4. Определяем индекс кликнутого li
+                const index = children.indexOf(clickedLi);
+
+                moveSlider(index);
+            }
+            //newUlBtnDots.removeEventListener('click', ulBtnDotsClick);
+        }
+
+        sliderControl.addEventListener('click', sliderControlClick);
+        function sliderControlClick(event) {
+            if (event.target.tagName === "BUTTON" && event.target.classList.contains('btn-prev')) { // ◀
+                moveSlider(firstIndexPositSlider - 1);
+            }
+            if (event.target.tagName === "BUTTON" && event.target.classList.contains('btn-next')) { // ▶
+                moveSlider(firstIndexPositSlider + 1);
+            }
+            //sliderControl.removeEventListener('click', sliderControlClick);
+        }
+
+        function moveSlider(indexSlide) {
+            const btnDotsItems = document.querySelectorAll('.btn-dots > li');
+            if (indexSlide !== firstIndexPositSlider) {
+                const currentSlide = document.querySelector(".active-slide");
+                const currentBtnDots = document.querySelector(".active-btn-dots");
+                currentSlide.classList.remove("active-slide");
+                currentBtnDots.classList.remove("active-btn-dots");
+                sliderItems[indexSlide].classList.add("active-slide");
+                btnDotsItems[indexSlide].classList.add("active-btn-dots");
+            }
+            if (indexSlide > firstIndexPositSlider) {
+                for (firstIndexPositSlider; firstIndexPositSlider < indexSlide; firstIndexPositSlider++) {
+                    sliderItems[firstIndexPositSlider].style.offsetDistance = '0%';
+                }
+                sliderItems[indexSlide].style.offsetDistance = '50%';
+                checkButtons();
+            }
+            if (indexSlide < firstIndexPositSlider) {
+                for (firstIndexPositSlider; firstIndexPositSlider > indexSlide; firstIndexPositSlider--) {
+                    sliderItems[firstIndexPositSlider].style.offsetDistance = '100%';
+                }
+                sliderItems[indexSlide].style.offsetDistance = '50%';
+                checkButtons();
+            }
+
+        }
+
+        function checkButtons() {
+            const currentSlide = document.querySelector(".active-slide");
+            if (currentSlide === sliderItems[0]) {
+                btnPrev.disabled = true;
+            } else {
+                btnPrev.disabled = false;
+            }
+
+            if (currentSlide === sliderItems[sliderItems.length - 1]) {
+                btnNext.disabled = true;
+            } else {
+                btnNext.disabled = false;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
