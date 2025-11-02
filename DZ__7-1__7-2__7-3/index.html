@@ -59,7 +59,7 @@
             return (elArray.filter(el => typeof el === 'number').reduce((accumulator, currentItem) => { return accumulator + currentItem; }, 0)) / (elArray.length - 1);
         } */
 
-        function arithmeticMeaning(elArray) {
+        /* function arithmeticMeaning(elArray) {
             return (elArray.reduce((accumulator, currentItem) => {
                 if (typeof currentItem === 'number') {
                     return accumulator += currentItem;
@@ -68,7 +68,12 @@
                     return accumulator;
                 }
             }, 0)) / (elArray.length - 1);
-        }
+        } */
+
+        const arithmeticMeaning = arr => {
+            const nums = arr.filter(Number.isFinite);
+            return nums.length ? nums.reduce((a, b) => a + b) / nums.length : 0;
+        };
 
         console.log(arithmeticMeaning(elementArray));
 
