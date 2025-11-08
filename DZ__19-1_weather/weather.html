@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <div class="weather-widget">
+        <div class="header">
+            <p class="city"></p>
+            <p class="date"></p>
+        </div>
+
+        <div class="time"><span>3:02</span> <span>PM</span></div>
+
+        <div class="details">
+            <p class="humidity">Humidity: <strong><span></span>%</strong></p>
+            <p class="pressure">Pressure: <strong><span></span> hPa</strong></p>
+            <p class="wind">Wind: <strong><span></span></strong></p>
+        </div>
+
+        <div class="temp-box">
+            <div class="icon"><img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Погодная иконка"></div>
+            <div class="temp"><span>30</span>°C</div>
+            <div class="feels">Feels Like: <span>32</span>°C</div>
+            <div class="cloudy"><span></span></div>
+        </div>
+
+        <footer class="footerBtn">
+            <span>Jun 13 11:02 PM</span>
+            <button class="btnRestartFetch">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                    <g>
+                        <path fill="#ffffff"
+                            d="M223.151,159.114l-38.806-38.724c21.75-11.384,45.884-17.32,71.004-17.32   c84.594,0,153.417,68.676,153.417,153.091H486c0-61.478-23.992-119.277-67.556-162.749S316.958,26,255.349,26   c-45.859,0-89.552,13.167-127.306,38.208L93.421,29.659L45.936,206.498L223.151,159.114z" />
+                        <path fill="#ffffff"
+                            d="M288.849,352.886l38.806,38.724c-21.75,11.384-45.884,17.32-71.004,17.32   c-84.594,0-153.417-68.676-153.417-153.092H26c0,61.478,23.992,119.277,67.556,162.749C137.12,462.059,195.042,486,256.651,486   c45.859,0,89.552-13.167,127.306-38.208l34.623,34.549l47.484-176.839L288.849,352.886z" />
+                    </g>
+                </svg>
+            </button>
+        </footer>
+    </div>
+
+    <script>
+        const city = document.querySelector(".city");
+        const date = document.querySelector(".date");
+        const time = document.querySelector(".time span:first-child");
+        const timePM = document.querySelector(".time span:last-child");
+        const humidity = document.querySelector(".humidity span");
+        const pressure = document.querySelector(".pressure span");
+        const wind = document.querySelector(".wind span");
+        const iconImg = document.querySelector('.icon img');
+        const temp = document.querySelector(".temp span");
+        const feels = document.querySelector(".feels span");
+        const cloudy = document.querySelector(".cloudy span");
+        const footerBtnSpan = document.querySelector(".footerBtn span");
+        const btnRestartFetch = document.querySelector(".btnRestartFetch");
+
+        const lat = '46.477474';
+        const lon = '30.732622';
+        const apiKey = 'd1278814b777d443cf77458a041cf680';
+        const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+
+        async function fetchData() {
+            try {
+                let result = await fetch(apiUrl);
+                const json = await result.json();
+                console.log(json);
+                city.textContent = json?.name;
+                humidity.textContent = json.main?.humidity;
+                pressure.textContent = json.main?.pressure;
+                wind.textContent = `${json.wind?.speed} km/h ${windDirection(json.wind?.deg)}`;
+                const newSrcIcon = json.weather?.[0]?.icon;
+                iconImg.src = iconImg.src.replace(/.{3}(?=@)/, newSrcIcon);
+                /* const iconUrl = `https://openweathermap.org/img/wn/${newSrcIcon}@2x.png`;
+                iconImg.src = iconUrl; */
+                temp.textContent = Math.round(json.main?.temp);
+                feels.textContent = Math.round(json.main?.feels_like);
+                cloudy.textContent = cloudsPercentToText(json.clouds?.all);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        fetchData();
+
+        function cloudsPercentToText(cloudsPercent) {
+            if (cloudsPercent < 11) return "Clear Sky";
+            if (cloudsPercent <= 25) return "Few Clouds";
+            if (cloudsPercent <= 50) return "Scattered Clouds";
+            if (cloudsPercent <= 84) return "Broken Clouds";
+            return "Overcast Clouds";
+        }
+
+        function windDirection(deg) {
+            const directions = [
+                "N", "NNE", "NE", "ENE",
+                "E", "ESE", "SE", "SSE",
+                "S", "SSW", "SW", "WSW",
+                "W", "WNW", "NW", "NNW"
+            ];
+
+            // Каждое направление — 22.5°, добавляем 11.25° для округления
+            const index = Math.floor(((deg + 11.25) % 360) / 22.5);
+            return directions[index];
+        }
+
+        class Timer {
+            constructor() {
+                this.intervalId = null;
+                this.datePart = '';
+                this.dateYear = '';
+                this.dayPart = '';
+                this.fullTime = '';
+                this.timePart = '';
+                this.periodPart = '';
+            }
+            startTimer() {
+                if (this.intervalId) return;
+                this.intervalId = setInterval(() => this.updateTimer(), 1000);
+                this.updateTimer();
+            }
+            updateTimer() {
+                const dateNew = new Date();
+                const optionsDate = { month: 'short', day: 'numeric'};
+                const optionsYear = { year: 'numeric' };
+                const optionsDay = { weekday: 'short' };
+                const optionsTime = { timeZone: "Europe/Kiev", hour: 'numeric', minute: '2-digit', hour12: true };
+
+                this.datePart = dateNew.toLocaleString('en-US', optionsDate);// Jun 13
+                this.dateYear = dateNew.toLocaleString('en-US', optionsYear);//  2015
+                this.dayPart = dateNew.toLocaleString('en-US', optionsDay);// Sat
+                this.fullTime = dateNew.toLocaleString('en-US', optionsTime);// 3:02  PM
+                [this.timePart, this.periodPart] = this.fullTime.split(' '); 
+                // 3:02         //PM
+                // обновляем DOM
+                date.textContent = `${this.datePart}, ${this.dateYear} - ${this.dayPart}`;
+                time.textContent = this.timePart;
+                timePM.textContent = this.periodPart;
+            }
+        }
+        const timer = new Timer();
+        timer.startTimer();
+        
+        btnRestartFetch.addEventListener('click', funBtnRestartFetch);
+        function funBtnRestartFetch(event) {
+            fetchData();
+            footerBtnSpan.textContent = `${timer.datePart} - ${timer.fullTime}`;
+            
+            //btnRestartFetch.removeEventListener('click', funBtnRestartFetch);
+        }
+    </script>
+</body>
+
+</html>
