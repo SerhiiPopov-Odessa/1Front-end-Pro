@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO_JQuery_Bootstrap</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ваше завдання</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <span>...</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <template class="templateNewTodoItem">
+        <li class="todoItem">
+            <span class="todoItemText" data-bs-toggle="modal" data-bs-target="#exampleModal">Text</span>
+            <button class="deleteTask buttonStyle">Видалити</button>
+        </li>
+    </template>
+
+    <div class="todoList">
+        <ol class="todoListItem">
+        </ol>
+        <div class="containerInput">
+            <input class="inputText inputStyle" type="text" placeholder="Додати нове завдання">
+            <button class="addTask buttonStyle">Додати</button>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.addTask').on('click', function () {
+                let $newItem = $($('.templateNewTodoItem').html());
+                $newItem.find('.todoItemText').text($('.inputText').val()).on('click', function () {
+                    $('.modal-body span').text($(this).text());
+                });
+                $newItem.find('.deleteTask').on('click', function () {
+                    $(this).closest('.todoItem').remove();
+                });
+                $('.todoListItem').append($newItem);
+            });
+        });
+    </script>
+
+</body>
+
+</html>
