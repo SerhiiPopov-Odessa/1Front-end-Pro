@@ -1,0 +1,10 @@
+$test: red;
+$test2: rgb(0, 4, 255);
+
+div {
+    background-color: $test;
+
+    &:hover {
+        background-color: $test2;
+    }
+}
