@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>ToDoList</h1>
+        <form class="form js--form">
+            <input id="form__input" type="text" name="value" required class="form__input js--form__input">
+            <button class="form__btn_add_todo">Додати</button>
+        </form>
+        <ul class="js--todos-wrapper">
+            <!-- <li class="todo-item">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li>
+            <li class="todo-item todo-item--checked">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li> -->
+        </ul>
+        <template class="template-new-todo-item">
+            <li class="todo-item">
+                <input type="checkbox">
+                <span class="todo-item__description">Text</span>
+                <button class="todo-item__delete">Видалити</button>
+            </li>
+        </template>
+
+        <script>
+            const templateNewTodoItem = document.querySelector(".template-new-todo-item");
+            const form = document.querySelector(".form");
+            const todosWrapperUl = document.querySelector(".js--todos-wrapper");
+            const apiUrl = `http://localhost:3000/todos/`;
+            let todos = [];
+
+            document.addEventListener("DOMContentLoaded", function () {
+                async function fetchDataGET() {
+                    try {
+                        const response = await fetch(apiUrl);
+                        const data = await response.json();
+                        return data;
+                    } catch (error) {
+                        console.error("Ошибка:", error);
+                        return null;
+                    }
+                }
+                async function loadTodos() {
+                    const data = await fetchDataGET();
+                    // УСЛОВИЕ: данные пришли успешно
+                    if (data && Array.isArray(data)) {
+                        todos = data;
+                        renderTodos();
+                        console.log("Read... Данные загружены:", todos);
+                    } else {
+                        console.warn("Нет данных или произошла ошибка");
+                    }
+                }
+                loadTodos();
+            });
+
+            function getId() {
+                return new Date().getTime();
+            }
+
+            async function fetchDataPOST(toDoItemData) {
+                //const toDoItemData = {id: getId(); text:"text", checked: false };
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(toDoItemData)
+                })
+                    .then(response => response.json())
+                    .then(result => console.log("Create", result))
+                    .catch(error => console.error('Помилка:', error));
+            }
+
+            async function fetchDataPATCH(id, toDoItemDataChecked) {
+                //const toDoItemData = { checked: true } // или false;
+                fetch(`${apiUrl}${id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(toDoItemDataChecked)   // или false
+                })
+                    .then(res => res.json())
+                    .then(data => console.log("Updated:", data))
+                    .catch(err => console.error(err));
+            }
+
+            async function fetchDataDELETE(id) {
+                //const toDoItemData = { checked: true } // или false;
+                fetch(`${apiUrl}${id}`, {
+                    method: "DELETE",
+                })
+                    .then(res => res.json())
+                    .then(data => console.log("Delete:", data))
+                    .catch(err => console.error(err));
+            }
+
+            function renderTodos() {
+                todosWrapperUl.innerHTML = '';
+                todos.forEach((todoItem, index) => {
+                    newTodos(todoItem);
+                });
+            }
+
+            function newTodos(todoItem = false, id = false) {
+                const cloneTemplateNewTodoItem = templateNewTodoItem.content.cloneNode(true);
+                const checkboxTodoItem = cloneTemplateNewTodoItem.querySelector('input[type="checkbox"]');
+                const liTodoItem = cloneTemplateNewTodoItem.querySelector('li.todo-item');
+                const spanTodoItem = cloneTemplateNewTodoItem.querySelector('span.todo-item__description');
+
+                if (id || todoItem.id) {
+                    liTodoItem.dataset.todoItemId = id ? id : todoItem.id;
+                }
+                if (todoItem.checked) {
+                    checkboxTodoItem.checked = true;
+                    liTodoItem.classList.add('todo-item--checked');
+                }
+                else {
+                    checkboxTodoItem.checked = false;
+                }
+                if (todoItem) {
+                    spanTodoItem.textContent = todoItem.text;
+                }
+                else {
+                    spanTodoItem.textContent = document.querySelector(".form__input").value.trim();
+                }
+                todosWrapperUl.append(cloneTemplateNewTodoItem);
+            }
+
+            todosWrapperUl.addEventListener('click', todosWrapperUlClick);
+            function todosWrapperUlClick(event) {
+                // Найдём ближайший LI (если кликнули внутри li)
+                const li = event.target.closest('li');
+                if (!li || !todosWrapperUl.contains(li)) return; // клик вне задач — игнорируем
+                // Вычислим индекс li в списке UL
+                const index = Array.from(todosWrapperUl.children).indexOf(li);
+                if (index === -1) return;
+
+                const id = event.target.parentElement.dataset.todoItemId;
+
+                if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
+                    if (event.target.checked) {
+                        fetchDataPATCH(id, {checked: true});
+                        event.target.parentElement.classList.add('todo-item--checked');
+                        todos[index].checked = true;
+                    } else {
+                        fetchDataPATCH(id, {checked: false});
+                        event.target.parentElement.classList.remove('todo-item--checked');
+                        todos[index].checked = false;
+                    }
+                    
+                }
+                if (event.target.tagName === 'BUTTON' && event.target.classList.contains('todo-item__delete')) {
+                    fetchDataDELETE(id);
+                    event.target.parentElement.remove();
+                    todos.splice(index, 1);
+                }
+                //todosWrapperUl.removeEventListener('click', todosWrapperUl_click);
+            }
+
+            form.addEventListener('click', formClickAddTodo);
+            function formClickAddTodo(event) {
+                event.preventDefault();
+                if (event.target.tagName === "BUTTON") {
+                    if (event.target.classList.contains('form__btn_add_todo')) {
+                        const text = document.querySelector(".form__input").value.trim();
+                        if (!text) {
+                            alert('Введите текст')
+                            return
+                        };
+                        const id = getId();
+                        newTodos(todoItem = false, id);
+                        toDoItemData = { id: id, text, checked: false };
+                        todos.push(toDoItemData);
+                        fetchDataPOST(toDoItemData);
+                        document.querySelector(".form__input").value = "";
+                    }
+                }
+                //form.removeEventListener('click', form_click_add_todo);
+            }
+        </script>
+    </div>
+</body>
+
+</html>
