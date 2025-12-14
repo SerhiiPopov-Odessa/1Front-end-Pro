@@ -12,13 +12,13 @@
 
         /*///////////////////////////////////   4.1    /////////////////////////////////////////////////*/
         const name = prompt("Enter your name");
-        alert( name ? `Hello, ${name}! How are you?`: prompt("Enter your name!!!!!!!!")); 
+        alert(name ? `Hello, ${name}! How are you?` : prompt("Enter your name!!!!!!!!"));
 
         /*///////////////////////////////////   4.2    /////////////////////////////////////////////////*/
         const number = prompt("Enter three numbers")
         const splitNumber = number.toString().split('').map(Number);
-        alert(splitNumber[0]===splitNumber[1] && splitNumber[1]===splitNumber[1] ? "Всi цифри однаковi" : "Всi цифри не однаковi");  
-        alert(splitNumber[0]===splitNumber[1] || splitNumber[1]===splitNumber[2] || splitNumber[0]===splitNumber[2] ? "Серед цифр є однаковi" : "Серед цифр немає однакових"); 
+        alert(splitNumber[0] === splitNumber[1] && splitNumber[1] === splitNumber[1] ? "Всi цифри однаковi" : "Всi цифри не однаковi");
+        alert(splitNumber[0] === splitNumber[1] || splitNumber[1] === splitNumber[2] || splitNumber[0] === splitNumber[2] ? "Серед цифр є однаковi" : "Серед цифр немає однакових");
 
         /*///////////////////////////////////   4.3    /////////////////////////////////////////////////*/
         let info = "";
@@ -31,7 +31,7 @@
         else {
             alert("Шкода, що Ви не захотіли ввести свій(ю) дату народження");
         }
-        info +=`\n`;
+        info += `\n`;
 
         const city = prompt("Your city");
         if (city) {
@@ -45,7 +45,7 @@
         else {
             alert("Шкода, що Ви не захотіли ввести своє мiсто");
         }
-        info +=`\n`;
+        info += `\n`;
 
         const favoriteSport = prompt("Your favorite sport");
         if (favoriteSport) {
@@ -67,7 +67,7 @@
         }
 
 
-        alert(info?info:"Нiчого не введено");
+        alert(info ? info : "Нiчого не введено");
 
         /*///////////////////////////////////   4.4    /////////////////////////////////////////////////*/
         let numOrStr = prompt('input number or string');
@@ -84,7 +84,7 @@
             default:
                 alert("OK!");
         }
-        
+
 
     </script>
 </body>

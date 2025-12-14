@@ -17,7 +17,7 @@ export default function App() {
   const [smileResult, setSmileResult] = useState({ id: "", count: 0 });
   const [showRemoveLocalStorage, setShowRemoveLocalStorage] = useState(true);
 
-  // --- componentDidMount ---
+  // componentDidMount 
   //Если бы [] не было:
   //эффект запускался бы на каждый рендер,
   //каждый раз затирал бы текущее состояние,
@@ -37,21 +37,19 @@ export default function App() {
     }
   }, []);
 
-  // --- componentDidUpdate (следим за smiles) ---
-  //если изменился smiles → эффект выполняется;
-  //если изменилось что-то другое → эффект не запускается;
-  //если компонент просто перерисовался без изменения smiles → эффект тоже не запускается.
+  //componentDidUpdate (следим за smiles)
+  //если изменился smiles то эффект выполняется;
+  //если изменилось что-то другое то эффект не запускается;
+  //если компонент просто перерисовался без изменения smiles то эффект тоже не запускается.
   useEffect(() => {
     console.log("Component was updated");
     localStorage.setItem("smiles", JSON.stringify(smiles));
   }, [smiles]);
 
-  // --- removeLocalStorage ---
   const removeLocalStorage = () => {
     setShowRemoveLocalStorage(prev => !prev);
   };
 
-  // --- changeSmile ---
   const changeSmile = (id) => {
     setSmiles(prev =>
       prev.map(smile =>
@@ -62,11 +60,10 @@ export default function App() {
     );
   };
 
-  // --- showResultsClick ---
   const showResultsClick = () => {
     const maxCount = Math.max(...smiles.map(s => s.count));
-    //smiles.map(s => s.count) создаёт: [3, 5, 1]
-    //Оператор ... (spread) Запись: Math.max(...[3, 5, 1]) превращается в вызов: Math.max(3, 5, 1)
+    //smiles.map(s => s.count) создаёт [3, 5, 1]
+    //Оператор ... (spread)  Math.max(...[3, 5, 1]) превращается в  Math.max(3, 5, 1)
 
     const bestCandidates = smiles.filter(s => s.count === maxCount);
 
@@ -80,7 +77,7 @@ export default function App() {
     console.log("Лучший смайл:", bestCandidates[0]);
   };
 
-  // --- clearResultsClick ---
+  
   //prev — предыдущий массив smiles. prev.map() создаёт новый массив, не изменяя старый.
   // Для каждого объекта smile мы возвращаем копию:
   // {
