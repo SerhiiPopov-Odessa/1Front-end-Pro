@@ -41,6 +41,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 2px solid rgb(20, 30, 172);
   padding: 1rem;
