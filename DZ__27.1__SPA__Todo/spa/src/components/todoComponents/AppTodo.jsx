@@ -13,15 +13,17 @@ const AppTodo = () => {
             isCompleted: false,
             id: uuidv4(),
         }
-        setTodos([...todos, newTodo])
-    }
+        //setTodos([...todos, newTodo])
+        setTodos(prevTodos => [...prevTodos, newTodo]);
 
     const deleteTodoHandler = (id) => {
-        setTodos(todos.filter((todo) => todo.id !== id))
+       //setTodos(todos.filter((todo) => todo.id !== id))
+        setTodos(prevTodos => prevTodos.filter((todo) => todo.id !== id))
     }
 
      const toggleTodoHandler = (id) => {
-        setTodos(todos.map( (todo) => todo.id === id ? {...todo, isCompleted:!todo.isCompleted } : {...todo} ))
+        //setTodos(todos.map( (todo) => todo.id === id ? {...todo, isCompleted:!todo.isCompleted } : {...todo} ))
+        setTodos(prevTodos => prevTodos.map( (todo) => todo.id === id ? {...todo, isCompleted:!todo.isCompleted } : {...todo} ))
     }
 
     return (
