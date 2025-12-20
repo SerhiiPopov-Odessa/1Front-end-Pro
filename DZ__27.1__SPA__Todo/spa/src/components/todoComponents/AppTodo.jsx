@@ -15,6 +15,7 @@ const AppTodo = () => {
         }
         //setTodos([...todos, newTodo])
         setTodos(prevTodos => [...prevTodos, newTodo]);
+    }
 
     const deleteTodoHandler = (id) => {
        //setTodos(todos.filter((todo) => todo.id !== id))
@@ -34,4 +35,4 @@ const AppTodo = () => {
         </div>
     );
 }
-export default AppTodo;
+export default AppTodo ;
