@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import AppTodo from './todoComponents/AppTodo'
+import AppTodo from './components/todo/AppTodo'
 import './App.css'
 
 function App() {
