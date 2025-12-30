@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { v4 as uuidv4 } from 'uuid'
-import {todosFetchSucceeded,todosFetchFailed, 
-  deleteTodoSucceeded, deleteTodoFailed, 
-  addTodoSucceeded, addTodoFailed, 
- toggleTodoSucceeded, toggleTodoFailed,
- updateTodoSucceeded, updateTodoFailed} from './actions/actions'
+import {fetchRequestedTodos, todosFetchSucceeded,todosFetchFailed, 
+  deleteTodoRequested, deleteTodoSucceeded, deleteTodoFailed, 
+  addTodoRequested, addTodoSucceeded, addTodoFailed, 
+ toggleTodoRequested, toggleTodoSucceeded, toggleTodoFailed,
+ updateTodoRequested, updateTodoSucceeded, updateTodoFailed} from './actions/actions'
 
 export const counterSlice = createSlice({
   name: 'todos',
@@ -20,20 +20,19 @@ export const counterSlice = createSlice({
     //deleteTodo: (state, actions) => {
     //  state.todos = state.todos.filter(todo => todo.id !== actions.payload)
     //},
-    toggleTodo: (state, actions) => {
+    /* toggleTodo: (state, actions) => {
       const todo = state.todos.find(todo => todo.id === actions.payload)
       if (todo) {
         todo.completed = !todo.completed;
       }
-    },
+    }, */
   },
   extraReducers: (builder) => {
-    
     ///////////////////////// fetchTodo ////////////////////////////////
-    /* builder.addCase(fetchTodoThunk.pending, (state) => {
+    builder.addCase(fetchRequestedTodos, (state) => {
       state.status = 'loading';
       state.error = null;
-    });  */
+    }); 
     builder.addCase(todosFetchSucceeded, (state, action) => {
       console.log("action.payload store Succeeded: ", action.payload)
       state.status = 'resolved';
@@ -45,6 +44,10 @@ export const counterSlice = createSlice({
       state.error = action.payload;
     });
     ///////////////////////// addTodo ////////////////////////////////
+    builder.addCase(addTodoRequested, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    }); 
     builder.addCase(addTodoSucceeded, (state, action) => {
       state.status = 'resolved';
       state.todos.push(action.payload);
@@ -54,6 +57,10 @@ export const counterSlice = createSlice({
       state.error = action.payload;
     });
     ///////////////////////// deleteTodo ////////////////////////////////
+    builder.addCase(deleteTodoRequested, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    }); 
     builder.addCase(deleteTodoSucceeded, (state, action) => {
       console.log("action.payload store deleteTodoSucceeded: ", action.payload)
       state.status = 'resolved';
@@ -65,6 +72,10 @@ export const counterSlice = createSlice({
       state.error = action.payload;
     });
     ///////////////////////// toggleTodo ////////////////////////////////
+    builder.addCase(toggleTodoRequested, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    }); 
     builder.addCase(toggleTodoSucceeded, (state, action) => {
       state.status = 'resolved';
       state.error = null;
@@ -78,6 +89,10 @@ export const counterSlice = createSlice({
       state.error = action.payload;
     });
     ///////////////////////// updateTodo ////////////////////////////////
+    builder.addCase(updateTodoRequested, (state) => {
+      state.status = 'loading';
+      state.error = null;
+    }); 
     builder.addCase(updateTodoSucceeded, (state, action) => {
       state.status = 'resolved';
       state.error = null;
