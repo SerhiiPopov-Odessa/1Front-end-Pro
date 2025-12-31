@@ -25,7 +25,7 @@ function* toggleTodos(action, signal) {
     const id = action.payload;
     const todo = yield select(state => state.todos.todos.find(todo => todo.id === id));
     const data = yield call(toggleTodoAPI, id, todo, signal)
-    yield put(toggleTodoSucceeded(data))
+    !data.id ? yield put(toggleTodoSucceeded({id})) : yield put(toggleTodoSucceeded(data));
   } catch (e) {
     if (e.name !== 'AbortError') {
       yield put(toggleTodoFailed(e.message));
@@ -63,9 +63,15 @@ function* watchAddTodos() {
 ////////////////////// deleteTodos ///////////////////////////////////////
 function* deleteTodos(action) {
   try {
-    const id = action.payload;
-    yield call(deleteTodoAPI, id)
-    yield put(deleteTodoSucceeded(id))
+    
+    let deleteTodo = Array.isArray(action.payload) ? action.payload : [action.payload];
+    
+    for (const todo of deleteTodo) {
+      yield call(deleteTodoAPI, todo.id);
+    }
+    //const id = action.payload;
+    //yield call(deleteTodoAPI, id)
+    yield put(deleteTodoSucceeded(deleteTodo))
   } catch (e) {
     yield put(deleteTodoFailed(e.message))
   }

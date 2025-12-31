@@ -1,10 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { v4 as uuidv4 } from 'uuid'
-import {fetchRequestedTodos, todosFetchSucceeded,todosFetchFailed, 
-  deleteTodoRequested, deleteTodoSucceeded, deleteTodoFailed, 
-  addTodoRequested, addTodoSucceeded, addTodoFailed, 
- toggleTodoRequested, toggleTodoSucceeded, toggleTodoFailed,
- updateTodoRequested, updateTodoSucceeded, updateTodoFailed} from './actions/actions'
+import {
+  fetchRequestedTodos, todosFetchSucceeded, todosFetchFailed,
+  deleteTodoRequested, deleteTodoSucceeded, deleteTodoFailed,
+  addTodoRequested, addTodoSucceeded, addTodoFailed,
+  toggleTodoRequested, toggleTodoSucceeded, toggleTodoFailed,
+  updateTodoRequested, updateTodoSucceeded, updateTodoFailed
+} from './actions/actions'
 
 export const counterSlice = createSlice({
   name: 'todos',
@@ -32,7 +34,7 @@ export const counterSlice = createSlice({
     builder.addCase(fetchRequestedTodos, (state) => {
       state.status = 'loading';
       state.error = null;
-    }); 
+    });
     builder.addCase(todosFetchSucceeded, (state, action) => {
       console.log("action.payload store Succeeded: ", action.payload)
       state.status = 'resolved';
@@ -47,10 +49,10 @@ export const counterSlice = createSlice({
     builder.addCase(addTodoRequested, (state) => {
       state.status = 'loading';
       state.error = null;
-    }); 
+    });
     builder.addCase(addTodoSucceeded, (state, action) => {
       state.status = 'resolved';
-      state.todos.push(action.payload);
+      state.todos.unshift(action.payload);
     });
     builder.addCase(addTodoFailed, (state, action) => {
       state.status = 'rejected';
@@ -60,23 +62,36 @@ export const counterSlice = createSlice({
     builder.addCase(deleteTodoRequested, (state) => {
       state.status = 'loading';
       state.error = null;
-    }); 
+    });
     builder.addCase(deleteTodoSucceeded, (state, action) => {
+      let idsToDelete = action.payload;
+      // Если пришли в idsToDelete массив объектов, извлекаем массив id
+      if (Array.isArray(idsToDelete) && typeof idsToDelete[0] === 'object') {
+        idsToDelete = idsToDelete.map(obj => obj.id);
+      } else if (!Array.isArray(idsToDelete)) {
+        idsToDelete = [idsToDelete];
+      }
+      state.todos = state.todos.filter(todo => !idsToDelete.includes(todo.id));
+      state.status = 'resolved';
+    });
+    /* builder.addCase(deleteTodoSucceeded, (state, action) => {
       console.log("action.payload store deleteTodoSucceeded: ", action.payload)
       state.status = 'resolved';
       state.todos = state.todos.filter(todo => todo.id !== action.payload)
-    });
+    }); */
     builder.addCase(deleteTodoFailed, (state, action) => {
       console.log("action.payload store deleteTodoFailed: ", action.payload)
       state.status = 'rejected';
       state.error = action.payload;
     });
     ///////////////////////// toggleTodo ////////////////////////////////
+
     builder.addCase(toggleTodoRequested, (state) => {
       state.status = 'loading';
       state.error = null;
-    }); 
+    });
     builder.addCase(toggleTodoSucceeded, (state, action) => {
+      console.log("action.payload.id store toggleTodo: ", action.payload)
       state.status = 'resolved';
       state.error = null;
       const todo = state.todos.find(todo => todo.id === action.payload.id)
@@ -92,7 +107,7 @@ export const counterSlice = createSlice({
     builder.addCase(updateTodoRequested, (state) => {
       state.status = 'loading';
       state.error = null;
-    }); 
+    });
     builder.addCase(updateTodoSucceeded, (state, action) => {
       state.status = 'resolved';
       state.error = null;
