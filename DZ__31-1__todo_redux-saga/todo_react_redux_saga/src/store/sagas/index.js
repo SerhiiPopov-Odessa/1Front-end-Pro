@@ -1,9 +1,11 @@
 import { call, put, fork, takeEvery, takeLatest, spawn, all, select, cancel, take } from 'redux-saga/effects'
-import {fetchRequestedTodos, todosFetchSucceeded, todosFetchFailed,
+import {
+  fetchRequestedTodos, todosFetchSucceeded, todosFetchFailed,
   deleteTodoRequested, deleteTodoSucceeded, deleteTodoFailed,
   addTodoRequested, addTodoSucceeded, addTodoFailed,
   toggleTodoRequested, toggleTodoSucceeded, toggleTodoFailed,
-  updateTodoRequested, updateTodoSucceeded, updateTodoFailed,} from '../actions/actions'
+  updateTodoRequested, updateTodoSucceeded, updateTodoFailed,
+} from '../actions/actions'
 import { fetchTodoAPI, deleteTodoAPI, toggleTodoAPI, addTodoAPI, updateTodoAPI } from '../../api'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -26,7 +28,7 @@ function* toggleTodos(action, signal) {
     const id = action.payload;
     const todo = yield select(state => state.todos.todos.find(todo => todo.id === id));
     const data = yield call(toggleTodoAPI, id, todo, signal)
-    !data.id ? yield put(toggleTodoSucceeded({id})) : yield put(toggleTodoSucceeded(data));
+    !data.id ? yield put(toggleTodoSucceeded({ id })) : yield put(toggleTodoSucceeded(data));
   } catch (e) {
     if (e.name !== 'AbortError') {
       yield put(toggleTodoFailed(e.message));
@@ -62,13 +64,11 @@ function* watchAddTodos() {
   yield takeEvery(addTodoRequested.type, addTodos);
 }
 ////////////////////// deleteTodos ///////////////////////////////////////
-function* deleteTodos(action) {
+function* deleteTodos(action, signal) {
   try {
-    
     let deleteTodo = Array.isArray(action.payload) ? action.payload : [action.payload];
-    
     for (const todo of deleteTodo) {
-      yield call(deleteTodoAPI, todo.id);
+      yield call(deleteTodoAPI, todo.id, signal);
     }
     //const id = action.payload;
     //yield call(deleteTodoAPI, id)
@@ -78,20 +78,41 @@ function* deleteTodos(action) {
   }
 }
 function* watchDeleteTodos() {
-  yield takeEvery(deleteTodoRequested.type, deleteTodos);
+  let task;
+  let abortController = new AbortController();
+  while (true) {
+    const action = yield take(deleteTodoRequested.type);
+    if (task) {
+      abortController.abort();
+      yield cancel(task);
+      abortController = new AbortController();
+    }
+    task = yield fork(deleteTodos, action, abortController.signal);
+  }
 }
 ///////////////////// fetchTodos //////////////////////////////////////
-function* fetchTodos(action) {
+function* fetchTodos(action, signal) {
   try {
-    const todos = yield call(fetchTodoAPI)
+    const todos = yield call(fetchTodoAPI, signal)
     yield put(todosFetchSucceeded(todos))
   } catch (e) {
     yield put(todosFetchFailed(e.message))
   }
 }
 function* watchFetchTodos() {
-  yield takeEvery(fetchRequestedTodos, fetchTodos);
+  let task;
+  let abortController = new AbortController();
+  while (true) {
+    const action = yield take(fetchRequestedTodos.type);
+    if (task) {
+      abortController.abort();
+      yield cancel(task);
+      abortController = new AbortController();
+    }
+    task = yield fork(fetchTodos, action, abortController.signal);
+  }
 }
+
 ///////////////////////////////////////////////////////////
 // Загрузка при входе на страницу
 /* function* loadBasicData() {
