@@ -1,4 +1,5 @@
 .appTodoContainer{
+  position: relative;
   text-align: center;
   color:blueviolet;
   
@@ -7,5 +8,9 @@
   color:darkred;
 }
 .todoLoding{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
   color:rgb(255, 145, 0);
 }
