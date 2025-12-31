@@ -5,7 +5,8 @@ import {
   deleteTodoRequested, deleteTodoSucceeded, deleteTodoFailed,
   addTodoRequested, addTodoSucceeded, addTodoFailed,
   toggleTodoRequested, toggleTodoSucceeded, toggleTodoFailed,
-  updateTodoRequested, updateTodoSucceeded, updateTodoFailed
+  updateTodoRequested, updateTodoSucceeded, updateTodoFailed,
+  resetTodos
 } from './actions/actions'
 
 export const counterSlice = createSlice({
@@ -38,7 +39,9 @@ export const counterSlice = createSlice({
     builder.addCase(todosFetchSucceeded, (state, action) => {
       console.log("action.payload store Succeeded: ", action.payload)
       state.status = 'resolved';
-      state.todos = action.payload;
+
+      state.todos.push(...action.payload);
+      /* state.todos = action.payload; */
     });
     builder.addCase(todosFetchFailed, (state, action) => {
       console.log("action.payload store Failed: ", action.payload)
@@ -52,7 +55,10 @@ export const counterSlice = createSlice({
     });
     builder.addCase(addTodoSucceeded, (state, action) => {
       state.status = 'resolved';
-      state.todos.unshift(action.payload);
+      state.todos.unshift({
+        ...action.payload,
+        id: action.payload.id === 201 ? uuidv4() : action.payload.id
+      });
     });
     builder.addCase(addTodoFailed, (state, action) => {
       state.status = 'rejected';
@@ -119,6 +125,12 @@ export const counterSlice = createSlice({
     builder.addCase(updateTodoFailed, (state, action) => {
       state.status = 'rejected';
       state.error = action.payload;
+    });
+    ///////////////////////// resetTodos ////////////////////////////////
+    builder.addCase(resetTodos, (state) => {
+      state.todos = [];
+      state.status = 'resolved';
+      state.error = null;
     });
   },
 })

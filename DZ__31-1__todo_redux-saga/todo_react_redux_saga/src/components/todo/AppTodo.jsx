@@ -26,7 +26,8 @@ const AppTodo = () => {
         <div className={styles.appTodoContainer}>
             <h2>Todo React Redux-Saga https://jsonplaceholder.typicode.com/todos</h2>
             <TodoForm />
-            {!!todos.length && <DeleteTodoBlock completedTodos={completedTodos} />}
+            <DeleteTodoBlock completedTodos={completedTodos} todos={todos}/>
+            {/* {!!todos.length && <DeleteTodoBlock completedTodos={completedTodos} />} */}
             {status === "loading" && <h2 className={styles.todoLoding}>Loading ...</h2>}
             {error && <h2 className={styles.todoError}> Error: {error}</h2>}
             <TodoList todos={todos} />

@@ -20,3 +20,5 @@ export const updateTodoRequested = createAction('UPDATE_TODO_REQUESTED');
 export const updateTodoSucceeded = createAction('UPDATE_TODO_SUCCEEDED');
 export const updateTodoFailed = createAction('UPDATE_TODO_FAILED');
 
+export const resetTodos = createAction('RESET_TODOS');
+
