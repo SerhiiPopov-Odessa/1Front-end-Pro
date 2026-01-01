@@ -1,0 +1,11 @@
+.appTodoContainer{
+  text-align: center;
+  color:blueviolet;
+  
+}
+.todoError{
+  color:darkred;
+}
+.todoLoding{
+  color:chartreuse;
+}
