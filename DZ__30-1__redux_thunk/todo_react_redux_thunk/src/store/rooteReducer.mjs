@@ -44,7 +44,7 @@ export const counterSlice = createSlice({
     }); 
     builder.addCase(addTodoThunk.fulfilled, (state, action) => {
       state.status = 'resolved';
-      state.todos.push(action.payload);
+      state.todos.unshift(action.payload);
     });
     builder.addCase(addTodoThunk.rejected, (state, action) => {
       state.status = 'rejected';
