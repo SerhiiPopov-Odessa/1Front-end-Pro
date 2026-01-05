@@ -1,0 +1,19 @@
+.nav {
+  max-width: 320px;
+}
+
+.link {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  
+}
+
+.link :global(.MuiTypography-root) {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.link:global(.active) :global(.MuiTypography-root) {
+  font-weight: 700;
+   color: #f0e808;
+}

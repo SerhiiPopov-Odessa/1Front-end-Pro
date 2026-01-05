@@ -1,0 +1,21 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+/* левая колонка */
+.sidebar {
+  padding: 1rem ;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  border-radius: 8px;
+  background-color: rgb(22, 56, 83);
+}
+
+/* правая часть на всю остав часть */
+.content {
+  flex: 1;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+}

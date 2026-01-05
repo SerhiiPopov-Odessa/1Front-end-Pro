@@ -1,0 +1,90 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFFFFF;
+  padding: 1rem ;
+}
+.name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.speciality {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.circle {
+  width: 18.75rem;
+  height: 18.75rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  background-color: #f3f4f6;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/*////////////////////// content ////////////////////*/
+.content {
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactText {
+  font-size: 0.7rem;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.contactText:hover {
+  text-decoration: underline;
+}
