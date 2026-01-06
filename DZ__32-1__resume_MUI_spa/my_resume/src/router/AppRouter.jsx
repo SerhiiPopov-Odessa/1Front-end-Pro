@@ -13,14 +13,14 @@ const AppRouter = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Navigate to="/profile" />} />
+        <Route index element={<Navigate to="/profile" />} />
 
           <Route path="profile" element={<Profile />} />
           <Route path="practice" element={<Practice />} />
           <Route path="todo-saga" element={<TodoSaga />} />
           <Route path="todo-thunk" element={<TodoThunk />} />
           <Route path="swapi-thunk" element={<SwapiThunk />} />
-          <Route path="this" element={<This />} />
+          {/* <Route path="this" element={<This />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

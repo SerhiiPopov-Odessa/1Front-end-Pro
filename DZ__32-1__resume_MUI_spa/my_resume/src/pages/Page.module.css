@@ -6,13 +6,126 @@
 .page h1 {
   font-size: 26px;
   margin-bottom: 1rem;
-  color: #0890f1;
+  color: rgb(22, 56, 83);
 }
 
 .page p {
   font-size: 15px;
   line-height: 1.7;
-  color: #e21a92;
+  color: #545454;
   margin-bottom: 1rem;
 }
 
+.divider {
+  height: 2px;
+  background-color: #545454;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 1rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f4f7f6; /* Легкий фон */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-top: 30px;
+  
+  /* color: #34495e; */
+  color: rgb(22, 56, 83);
+  text-transform: uppercase;
+}
+
+.divider {
+  height: 2px;
+  background-color: #545454;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.intro {
+  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+
+.jobTitle {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.date {
+  font-weight: 600;
+  color: #3498db;
+  min-width: 100px;
+  display: inline-block;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* Для списку освіти, де дата йде попереду */
+.list li .date {
+  font-size: 0.9rem;
+  background: #e1f0fa;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+
+.info a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.info a:hover {
+  text-decoration: underline;
+  color: #2980b9;
+}
+
+.list li strong {
+  color: #2c3e50;
+}
