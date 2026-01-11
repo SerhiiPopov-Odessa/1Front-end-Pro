@@ -31,17 +31,10 @@ const Profile = () => {
           <div className={styles.divider}></div>
           <ul className={styles.list}>
             <li>
-              <span className={styles.date}>2004 – 2009</span>
+              <span className={styles.date}>2025</span>
               <div className={styles.info}>
-                <strong>Odessa State Agrarian University</strong>
-                (<a href="https://osau.edu.ua" target="_blank" rel="noreferrer">osau.edu.ua</a>)
-              </div>
-            </li>
-            <li>
-              <span className={styles.date}>2007 – 2009</span>
-              <div className={styles.info}>
-                <strong> Programmer. IT Step Academy</strong>
-                (<a href="https://od.itstep.org" target="_blank" rel="noreferrer">od.itstep.org</a>)
+                <strong>Front-end Basic</strong>
+                (<a href="https://certificate.ithillel.ua/view/19171804" target="_blank" rel="noreferrer">Hillel IT school</a>)
               </div>
             </li>
             <li>
@@ -52,10 +45,17 @@ const Profile = () => {
               </div>
             </li>
             <li>
-              <span className={styles.date}>2025</span>
+              <span className={styles.date}>2007 – 2009</span>
               <div className={styles.info}>
-                <strong>Front-end Basic</strong>
-                (<a href="https://certificate.ithillel.ua/view/19171804" target="_blank" rel="noreferrer">Hillel IT school</a>)
+                <strong> Programmer. IT Step Academy</strong>
+                (<a href="https://od.itstep.org" target="_blank" rel="noreferrer">od.itstep.org</a>)
+              </div>
+            </li>
+            <li>
+              <span className={styles.date}>2004 – 2009</span>
+              <div className={styles.info}>
+                <strong>Odessa State Agrarian University</strong>
+                (<a href="https://osau.edu.ua" target="_blank" rel="noreferrer">osau.edu.ua</a>)
               </div>
             </li>
           </ul>
