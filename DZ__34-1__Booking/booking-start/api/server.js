@@ -1,31 +1,26 @@
-// See https://github.com/typicode/json-server#module
-const jsonServer = require('json-server')
+import jsonServer from "json-server";
+import path from "path";
+import { fileURLToPath } from "url";
 
-const server = jsonServer.create()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Uncomment to allow write operations
-// const fs = require('fs')
-// const path = require('path')
-// const filePath = path.join('db.json')
-// const data = fs.readFileSync(filePath, "utf-8");
-// const db = JSON.parse(data);
-// const router = jsonServer.router(db)
+const server = jsonServer.create();
+const router = jsonServer.router(path.join(__dirname, "../db.json"));
+const middlewares = jsonServer.defaults();
 
-// Comment out to allow write operations
-const router = jsonServer.router('db.json')
+server.use(middlewares);
 
-const middlewares = jsonServer.defaults()
+// /api/destination → /destination
+server.use(
+  jsonServer.rewriter({
+    "/api/*": "/$1",
+  })
+);
 
-server.use(middlewares)
-// Add this before server.use(router)
-server.use(jsonServer.rewriter({
-    '/api/*': '/$1',
-    '/blog/:resource/:id/show': '/:resource/:id'
-}))
-server.use(router)
-server.listen(3000, () => {
-    console.log('JSON Server is running')
-})
+server.use(router);
 
-// Export the Server API
-module.exports = server
+// ❗ ВАЖНО: никаких server.listen()
+export default function handler(req, res) {
+  server(req, res);
+}
