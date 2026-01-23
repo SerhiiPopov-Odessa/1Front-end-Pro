@@ -1,5 +1,5 @@
 import {call, put} from 'redux-saga/effects';
-import api from '../../../utils/axiosApi';
+import api from '../../../api/axiosApi';
 import { setLoading, setItems } from '../slice';
 
 export function* callGetDestinationWorker() {
