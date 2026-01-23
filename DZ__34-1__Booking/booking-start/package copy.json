@@ -2,8 +2,6 @@
   "name": "booking",
   "private": true,
   "version": "0.0.0",
-  "description": "Deploy JSON Server to Vercel",
-  "main": "api/server.js",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,8 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch db.json",
-    "start": "node api/server.js",
-    "local:start": "concurrently -k \"npm run dev\" \"npm run server\""
+    "start": "concurrently -k \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
