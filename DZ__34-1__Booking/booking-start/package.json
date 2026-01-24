@@ -13,6 +13,7 @@
     "server": "json-server --watch db.json",
     "start": "node api/server.js",
     "local:start": "concurrently -k \"npm run dev\" \"npm run server\""
+    
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
