@@ -15,8 +15,8 @@ const Header = () => {
           />
         </div>
       </div>
-      <h1 className={clsx("sm:!text-base",styles.name)}>SERHII POPOV</h1>
-      <h2 className={clsx("sm:!text-xs",styles.speciality)}>FRONTEND DEVELOPER</h2>
+      <h1 className={clsx("sm:!text-base lg:!text-lg ",styles.name)}>SERHII POPOV</h1>
+      <h2 className={clsx("sm:!text-xs lg:!text-base",styles.speciality)}>FRONTEND DEVELOPER</h2>
       <div className={styles.content}>
         <h2 className={styles.title}>Contact</h2>
         <div className={styles.divider}></div>
