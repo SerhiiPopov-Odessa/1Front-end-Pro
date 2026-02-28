@@ -1,10 +1,10 @@
-import styles from './Page.module.css';
+
 
 const This = () => {
   return (
     <>
-      <h1 className={styles.pageTitle}>THIS</h1>
-      <p className={styles.pageText}>THIS</p>
+      <h1 className=" text-xl text-fuchsia-700 text-center mb-2 font-semibold">THIS</h1>
+      <p className=" text-xl text-amber-700 text-center mb-2">THIS</p>
     </>
   );
 };

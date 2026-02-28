@@ -1,28 +1,25 @@
-import { NavLink } from 'react-router-dom';
-import {
-  List,
-  ListItemButton,
-  ListItemText,
-} from '@mui/material';
-import styles from './Navigation.module.css';
+import { NavLink } from "react-router-dom";
+import { List, ListItemButton, ListItemText } from "@mui/material";
+import clsx from "clsx";
+import styles from "./Navigation.module.css";
 
 const navItems = [
-  { label: 'Profile', to: '/profile' },
+  { label: "Profile", to: "/profile" },
   {
-    label: 'The first practical assignment of the Frontend Basics course',
-    to: '/practice',
+    label: "The first practical assignment of the Frontend Basics course",
+    to: "/practice",
   },
   {
-    label: 'Todo React Redux-Saga of the Frontend PRO course',
-    to: '/todo-saga',
+    label: "Todo React Redux-Saga of the Frontend PRO course",
+    to: "/todo-saga",
   },
   {
-    label: 'Todo React Redux-Thunk of the Frontend PRO course',
-    to: '/todo-thunk',
+    label: "Todo React Redux-Thunk of the Frontend PRO course",
+    to: "/todo-thunk",
   },
   {
-    label: 'SWAPI React Redux-Thunk of the Frontend PRO course',
-    to: '/swapi-thunk',
+    label: "SWAPI React Redux-Thunk of the Frontend PRO course",
+    to: "/swapi-thunk",
   },
   //{ label: 'THIS', to: '/this' },
 ];
@@ -39,6 +36,11 @@ const Navigation = () => {
             component={NavLink}
             to={to}
             className={styles.link}
+            sx={{
+              px:0,
+              py: { xs: 0.25, sm: 0.25, md: 0.5 }, 
+              minHeight: { xs: 24,sm: 0.25, md: 32 },
+            }}
           >
             <ListItemText primary={label} />
           </ListItemButton>

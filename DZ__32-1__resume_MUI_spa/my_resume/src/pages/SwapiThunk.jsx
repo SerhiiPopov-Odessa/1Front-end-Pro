@@ -1,12 +1,12 @@
-import styles from './Page.module.css';
+
 import Greenshop from '../img/swapithunk.png';
 
 const SwapiThunk = () => {
   return (
     <>
-      <div className={styles.page}>
-        <h1 className={styles.pageTitle}>SWAPI Project</h1>
-        <p className={styles.pageText}>
+      <div className="flex flex-col items-center justify-start p-4">
+        <h1 className="text-xl text-fuchsia-700 text-center mb-2 font-semibold">SWAPI Project</h1>
+        <p className="text-xl text-amber-700 text-center mb-2">
           Fetch data from SWAPI using React Redux-Thunk.
         </p>
         <div>
