@@ -10,15 +10,19 @@ const navItems = [
     to: "/practice",
   },
   {
-    label: "Todo React Redux-Saga of the Frontend PRO course",
+    label: "Booking",
+    to: "/booking",
+  },
+  {
+    label: "Todo React Redux-Saga",
     to: "/todo-saga",
   },
   {
-    label: "Todo React Redux-Thunk of the Frontend PRO course",
+    label: "Todo React Redux-Thunk",
     to: "/todo-thunk",
   },
   {
-    label: "SWAPI React Redux-Thunk of the Frontend PRO course",
+    label: "SWAPI React Redux-Thunk",
     to: "/swapi-thunk",
   },
   //{ label: 'THIS', to: '/this' },

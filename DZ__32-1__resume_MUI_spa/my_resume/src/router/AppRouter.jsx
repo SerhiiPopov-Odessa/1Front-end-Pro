@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 
 import Profile from '../pages/Profile';
 import Practice from '../pages/Practice';
+import Booking from '../pages/Booking';
 import TodoSaga from '../pages/TodoSaga';
 import TodoThunk from '../pages/TodoThunk';
 import SwapiThunk from '../pages/SwapiThunk';
@@ -17,6 +18,7 @@ const AppRouter = () => {
 
           <Route path="profile" element={<Profile />} />
           <Route path="practice" element={<Practice />} />
+          <Route path="booking" element={<Booking />} />
           <Route path="todo-saga" element={<TodoSaga />} />
           <Route path="todo-thunk" element={<TodoThunk />} />
           <Route path="swapi-thunk" element={<SwapiThunk />} />
