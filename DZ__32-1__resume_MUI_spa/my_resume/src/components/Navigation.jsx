@@ -18,6 +18,10 @@ const navItems = [
     to: "/todo-saga",
   },
   {
+    label: "Testing",
+    to: "/testing",
+  },
+  {
     label: "Todo React Redux-Thunk",
     to: "/todo-thunk",
   },

@@ -8,6 +8,7 @@ import TodoSaga from '../pages/TodoSaga';
 import TodoThunk from '../pages/TodoThunk';
 import SwapiThunk from '../pages/SwapiThunk';
 import VanilaJS from '../pages/VanillaJS';
+import Testing from '../pages/Testing';
 import This from '../pages/This';
 
 const AppRouter = () => {
@@ -21,6 +22,7 @@ const AppRouter = () => {
           <Route path="practice" element={<Practice />} />
           <Route path="booking" element={<Booking />} />
           <Route path="todo-saga" element={<TodoSaga />} />
+          <Route path="testing" element={<Testing />} />
           <Route path="todo-thunk" element={<TodoThunk />} />
           <Route path="swapi-thunk" element={<SwapiThunk />} />
           <Route path="vanilaJS" element={<VanilaJS />} />
