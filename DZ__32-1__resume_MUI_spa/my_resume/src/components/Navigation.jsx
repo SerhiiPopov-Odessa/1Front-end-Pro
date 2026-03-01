@@ -25,6 +25,10 @@ const navItems = [
     label: "SWAPI React Redux-Thunk",
     to: "/swapi-thunk",
   },
+  {
+    label: "Vanila JS",
+    to: "/vanilaJS",
+  },
   //{ label: 'THIS', to: '/this' },
 ];
 
