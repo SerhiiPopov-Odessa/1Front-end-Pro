@@ -33,7 +33,7 @@ const navItems = [
     label: "Vanila JS",
     to: "/vanilaJS",
   },
-  //{ label: 'THIS', to: '/this' },
+  { label: "THIS", to: "/this" },
 ];
 
 const Navigation = () => {
@@ -41,7 +41,14 @@ const Navigation = () => {
     <div>
       <h2 className={styles.title}>My practice</h2>
       <div className={styles.divider}></div>
-      <List className={styles.nav}>
+      <List
+        /* className={styles.nav} */
+        sx={{
+          py: 1,
+          height: "35vh",
+          overflowY: "auto",
+        }}
+      >
         {navItems.map(({ label, to }) => (
           <ListItemButton
             key={to}
@@ -49,12 +56,14 @@ const Navigation = () => {
             to={to}
             className={styles.link}
             sx={{
-              px:0,
-              py: { xs: 0.25, sm: 0.25, md: 0.5 }, 
-              minHeight: { xs: 24,sm: 0.25, md: 32 },
+              px: 0,
+              py: { xs: 0.25, sm: 0.25, md: 0.25 },
+              minHeight: { xs: 24, sm: 24, md: 32 },
             }}
           >
-            <ListItemText primary={label} />
+            <ListItemText
+              primary={label}
+            />
           </ListItemButton>
         ))}
       </List>

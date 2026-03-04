@@ -19,6 +19,12 @@
   color: #FFFFFF;
 }
 
+/* @media (min-width: 1200px) {
+  .link :global(.MuiTypography-root) {
+    font-size: 14px;
+  }
+} */
+
 .link:global(.active) :global(.MuiTypography-root) {
   font-weight: 700;
    color: #f0e808;

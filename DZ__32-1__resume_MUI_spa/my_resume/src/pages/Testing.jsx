@@ -8,7 +8,7 @@ const Testing = () => {
         className="text-xl text-fuchsia-700/75 text-center mb-8 
       font-semibold bg-amber-300 rounded-2xl px-8"
       >
-        Testing the TODO app of the Frontend PRO course
+        Testing the TODO app 
       </h1>
 
       <p className="text-xl text-amber-700/90 font-semibold text-center bg-lime-600/50 w-fit mx-auto px-4 rounded-2xl mb-2">

@@ -26,7 +26,7 @@ const AppRouter = () => {
           <Route path="todo-thunk" element={<TodoThunk />} />
           <Route path="swapi-thunk" element={<SwapiThunk />} />
           <Route path="vanilaJS" element={<VanilaJS />} />
-          {/* <Route path="this" element={<This />} /> */}
+          <Route path="this" element={<This />} />
         </Route>
       </Routes>
     </BrowserRouter>
