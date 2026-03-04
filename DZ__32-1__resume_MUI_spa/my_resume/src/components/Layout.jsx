@@ -6,7 +6,7 @@ import clsx from "clsx";
 const Layout = () => {
   return (
     <div className="flex flex-col sm:flex-row  p-4 max-sm:space-y-2 sm:space-x-2 sm:h-screen">
-      <aside className="sm:w-2/5 xl:w-2/8  p-4 rounded-lg bg-[rgb(22,56,83)] text-[#FFFFFF] ">
+      <aside className="sm:w-2/5 xl:w-2/8  p-4 rounded-lg bg-[rgb(22,56,83)] text-[#FFFFFF] overflow-y-auto">
         <Header />
         <Navigation />
       </aside>
