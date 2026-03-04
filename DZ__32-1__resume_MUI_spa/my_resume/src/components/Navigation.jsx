@@ -33,7 +33,7 @@ const navItems = [
     label: "Vanila JS",
     to: "/vanilaJS",
   },
-  { label: "THIS", to: "/this" },
+  { label: "This", to: "/this" },
 ];
 
 const Navigation = () => {
