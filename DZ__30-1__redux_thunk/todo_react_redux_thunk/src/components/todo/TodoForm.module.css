@@ -3,24 +3,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+ /*  margin-bottom: 1rem; */
 }
 
-.todoFormContainer form {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-flow: row;
-  flex-wrap: wrap;
-  width: 55%;
-}
 
 .inputBlock {
   display: flex;
-  width: 80%;
   justify-content: flex-start;
   align-items: center;
-  flex-direction: column;
 }
 
 .todoFormContainer button {
@@ -34,7 +24,7 @@
 
 .todoFormContainer input {
   margin: 0;
-  width: 90%;
+  width: 100%;
   border: 2px solid rgb(20, 30, 172);
   padding: 10px;
   font-size: 1.3rem;

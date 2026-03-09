@@ -46,7 +46,7 @@ function TodoForm() {
             <div className={clsx("flex-1 min-w-[200px]",styles.inputBlock)}>
               <Field type="text" name="todoInput" className="w-full border rounded px-3 py-2"/> 
             </div>
-            <button type="submit" disabled={isSubmitting} className="px-6 py-2 bg-blue-500 text-white rounded shrink-0">
+            <button type="submit" disabled={isSubmitting} className="px-6 py-2 bg-blue-500 text-white rounded shrink-0 flex items-center justify-center">
               Submit
             </button>
             {touched.todoInput && errors.todoInput && (

@@ -17,7 +17,7 @@ const AppTodo = () => {
 
     return (
         <div className={styles.appTodoContainer}>
-            <h2>Todo React Redux-Thunk https://jsonplaceholder.typicode.com/todos</h2>
+            <h2 className={styles.h2}>Todo React Redux-Thunk https://jsonplaceholder.typicode.com/todos</h2>
             <TodoForm  />
             {status === "loding" && <h2 className={styles.todoLoding}>Loading ...</h2>}
             {error && <h2 className={styles.todoError}> Error: {error}</h2>}
