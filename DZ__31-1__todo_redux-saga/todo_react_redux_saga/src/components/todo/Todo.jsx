@@ -5,6 +5,7 @@ import { RiDeleteBin2Line } from 'react-icons/ri'
 import { BsPencilSquare } from "react-icons/bs";
 import { FaCheck } from 'react-icons/fa'
 import styles from './Todo.module.css';
+import clsx from "clsx";
 
 function Todo({ todo, }) {
   const dispatch = useDispatch()
@@ -24,7 +25,7 @@ function Todo({ todo, }) {
   }
 
   return (
-    <div className={`${styles.todo} ${todo.completed && styles.completedTodo}`} onDoubleClick={startEdit}>
+    <div className={`${clsx("w-full sm:w-[95%] xl:w-[60%]", styles.todo)} ${todo.completed && styles.completedTodo}`} onDoubleClick={startEdit}>
       <BsPencilSquare className={styles.todoIcon} onClick={e => { e.stopPropagation(); startEdit(); }} />
 
       {isEditing ? (

@@ -24,7 +24,7 @@ const AppTodo = () => {
 
     return (
         <div className={styles.appTodoContainer}>
-            <h2>Todo React Redux-Saga https://jsonplaceholder.typicode.com/todos</h2>
+            <h2 className={styles.h2}>Todo React Redux-Saga https://jsonplaceholder.typicode.com/todos</h2>
             <TodoForm />
             <DeleteTodoBlock completedTodos={completedTodos} todos={todos}/>
             {/* {!!todos.length && <DeleteTodoBlock completedTodos={completedTodos} />} */}

@@ -11,7 +11,7 @@ const Layout = () => {
         <Navigation />
       </aside>
 
-      <main className=" sm:w-3/5 xl:w-6/8  border-[rgb(22,56,83)] border-2 rounded-lg ">
+      <main className="sm:w-3/5 xl:w-6/8  border-[rgb(22,56,83)] border-2 rounded-lg ">
         <Outlet />
       </main>
     </div>
