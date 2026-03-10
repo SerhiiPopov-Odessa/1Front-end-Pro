@@ -65,6 +65,7 @@
   /* color: gray; */
   padding: 0 7px;
   font-size: 3rem;
+  transform: scale(1);
   transition: transform 0.3s;
 }
 
