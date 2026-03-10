@@ -83,7 +83,7 @@
   .todoIcon:active,
   .checkIcon:active,
   .deleteIcon:active {
-    transform: scale(0.9);
+    transform: scale(1.3);
   }
 }
 
