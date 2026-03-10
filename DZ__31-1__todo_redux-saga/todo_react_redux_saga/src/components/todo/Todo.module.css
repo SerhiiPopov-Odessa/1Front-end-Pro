@@ -69,16 +69,22 @@
   transition: transform 0.2s ease;
 }
 
-.todoIcon:hover,
-.checkIcon:hover,
-.deleteIcon:hover {
-  transform: scale(1.3);
+/* устройства с мышкой */
+@media (hover: hover) and (pointer: fine) {
+  .todoIcon:hover,
+  .checkIcon:hover,
+  .deleteIcon:hover {
+    transform: scale(1.3);
+  }
 }
 
-.todoIcon:active,
-.checkIcon:active,
-.deleteIcon:active {
-  transform: scale(0.95);
+/* сенсорные устройства */
+@media (hover: none) and (pointer: coarse) {
+  .todoIcon:active,
+  .checkIcon:active,
+  .deleteIcon:active {
+    transform: scale(0.9);
+  }
 }
 
 .checkIcon {
