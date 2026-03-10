@@ -66,13 +66,12 @@
   padding: 0 7px;
   font-size: 3rem;
   transform: scale(1);
-  transition: transform 0.3s;
+  transition: transform 0.2s ease;
 }
 
 .todoIcon:hover,
 .checkIcon:hover,
 .deleteIcon:hover {
-  cursor: pointer;
   transform: scale(1.3);
 }
 
