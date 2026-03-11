@@ -23,7 +23,7 @@
     top: 80px;
   }
 }
-@media (max-width:380px) {
+@media (max-width:500px) {
   .todoLoding {
     top: 150px;
   }
