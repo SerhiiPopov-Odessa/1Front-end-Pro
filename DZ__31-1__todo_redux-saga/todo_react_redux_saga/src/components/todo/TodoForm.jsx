@@ -42,11 +42,11 @@ function TodoForm() {
         }}
       >
         {({ isSubmitting, touched, errors }) => (
-          <Form className="w-[90%] xl:w-[50%] flex flex-wrap items-center gap-4" >
+          <Form className=" xl:w-[50%] flex flex-wrap items-center gap-4" >
             <div className={clsx("flex-1 min-w-[200px]",styles.inputBlock)}>
               <Field type="text" name="todoInput" className="w-full border rounded px-3 py-2"/> 
             </div>
-            <button type="submit" disabled={isSubmitting} className="px-6 py-2 bg-blue-500 text-white rounded shrink-0 flex items-center justify-center">
+            <button type="submit" disabled={isSubmitting} className="sm:px-6 sm:py-2 bg-blue-500 text-lg sm:text-2xl text-white rounded shrink-0 flex items-center justify-center">
               Submit
             </button>
             {touched.todoInput && errors.todoInput && (

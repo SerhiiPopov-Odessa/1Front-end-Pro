@@ -19,3 +19,15 @@
   background-color: #ccc; 
   color: #666;            
 }
+
+/* @media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+} */
+@media (max-width: 576px) {
+  .button {
+    font-size: 1.125rem;
+  }
+} 

@@ -12,7 +12,8 @@ function DeleteTodoBlock({completedTodos, todos}) {
       <Button title="Reset Todos" disabled = {!todos.length} onClick={e => { e.stopPropagation(); dispatch(resetTodos()); }}><FcDeleteDatabase /></Button>
       <Button title="Fetch Requested Todos" onClick={e => { e.stopPropagation(); dispatch(fetchRequestedTodos()); }}><FcAddDatabase /></Button>
       <Button title="Clear Completed Todos" disabled = {!completedTodos.length} 
-      onClick={e => { e.stopPropagation(); dispatch(deleteTodoRequested(completedTodos)); }}>Delete completed</Button>
+      onClick={e => { e.stopPropagation(); dispatch(deleteTodoRequested(completedTodos)); }}
+      >Delete completed</Button>
     </div>
   )
 }

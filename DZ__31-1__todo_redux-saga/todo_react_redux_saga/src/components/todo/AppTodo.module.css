@@ -14,12 +14,17 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 55px;
+  top: 105px;
   color: rgb(255, 145, 0);
 }
 
-@media (max-width: 704px) {
+@media (max-width:704px) {
   .todoLoding {
     top: 80px;
+  }
+}
+@media (max-width:360px) {
+  .todoLoding {
+    top: 100px;
   }
 }
