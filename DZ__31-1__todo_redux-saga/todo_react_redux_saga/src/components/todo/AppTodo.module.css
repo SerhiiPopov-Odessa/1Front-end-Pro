@@ -23,16 +23,10 @@
     /* top: 80px; */
     top: 100px;
   }
-  body {
-    background: red;
-  }
 }
 @media (max-width:576px) {
   .todoLoding {
     top: 110px;
     left: 40%;
-  }
-   body {
-    background: rgb(0, 255, 4);
   }
 }
