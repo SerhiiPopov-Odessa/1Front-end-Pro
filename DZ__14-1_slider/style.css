@@ -152,9 +152,26 @@ button:hover:disabled {
 }
 @media (max-width: 992px) {
 }
-@media (max-width: 768px) {
+@media (max-width: 768px) and (orientation: portrait){
+  /* .slider {
+    width: 80vw;
+    height: 40vh;
+  }
+
+  .btn-prev {
+    left: -8%;
+  }
+
+  .btn-next {
+    right: -8%;
+  }
+  .btn-dots {
+    bottom: -20%;
+  } */
 }
-@media (max-width: 576px) {
+
+@media (max-width: 576px) and (orientation: portrait) {
+  /* Стили для телефонов в вертикальной ориентации */
   .slider {
     width: 90vw;
     height: 40vh;
@@ -166,5 +183,27 @@ button:hover:disabled {
 
   .btn-next {
     right: 0%;
+  }
+  .btn-dots {
+    bottom: -20%;
+  }
+}
+
+@media (max-width: 576px) and (orientation: landscape) {
+  /* Стили для телефонов в горизонтальной ориентации */
+  .slider {
+   /*  width: 90vw; */
+    height: 60vh;
+  }
+  .btn-prev {
+    left: -20%;
+  }
+
+  .btn-next {
+    right:-20%;
+  }
+
+  .btn-dots {
+    bottom: -35%;
   }
 }
