@@ -148,12 +148,9 @@ button:hover:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width: 1200px) {
-}
-@media (max-width: 992px) {
-}
-@media (max-width: 768px) and (orientation: portrait){
-  /* .slider {
+
+@media (max-width: 768px) and (orientation: portrait) {
+  .slider {
     width: 80vw;
     height: 40vh;
   }
@@ -167,7 +164,7 @@ button:hover:disabled {
   }
   .btn-dots {
     bottom: -20%;
-  } */
+  }
 }
 
 @media (max-width: 576px) and (orientation: portrait) {
@@ -189,18 +186,36 @@ button:hover:disabled {
   }
 }
 
-@media (max-width: 576px) and (orientation: landscape) {
-  /* Стили для телефонов в горизонтальной ориентации */
+@media (max-width: 1100px) and (orientation: landscape) {
   .slider {
-   /*  width: 90vw; */
-    height: 60vh;
+    width: 60vw;
+    height: 40vh;
   }
+
   .btn-prev {
-    left: -20%;
+    left: -8%;
   }
 
   .btn-next {
-    right:-20%;
+    right: -8%;
+  }
+  .btn-dots {
+    bottom: -25%;
+  }
+}
+
+@media (max-width: 800px) and (orientation: landscape) {
+  /* Стили для телефонов в горизонтальной ориентации */
+  .slider {
+    width: 40vw;
+    height: 60vh;
+  }
+  .btn-prev {
+    left: -15%;
+  }
+
+  .btn-next {
+    right: -15%;
   }
 
   .btn-dots {
