@@ -205,7 +205,6 @@ button:hover:disabled {
 }
 
 @media (max-width: 800px) and (orientation: landscape) {
-  /* Стили для телефонов в горизонтальной ориентации */
   .slider {
     width: 40vw;
     height: 60vh;
@@ -219,6 +218,6 @@ button:hover:disabled {
   }
 
   .btn-dots {
-    bottom: -35%;
+    bottom: -27%;
   }
 }
