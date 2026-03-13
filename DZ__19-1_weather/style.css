@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-.centr{
+.centr {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,5 +135,10 @@ body {
     justify-content: space-around;
     flex-direction: row;
   }
-  
+  .footerBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
