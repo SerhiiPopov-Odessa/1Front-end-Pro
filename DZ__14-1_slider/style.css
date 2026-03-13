@@ -207,7 +207,7 @@ button:hover:disabled {
 @media (max-width: 800px) and (orientation: landscape) {
   .slider {
     width: 40vw;
-    height: 60vh;
+    height: 55vh;
   }
   .btn-prev {
     left: -15%;
