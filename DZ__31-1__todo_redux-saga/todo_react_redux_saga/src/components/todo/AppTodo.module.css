@@ -27,7 +27,7 @@
     background: red;
   }
 }
-@media (max-width:360px) {
+@media (max-width:576px) {
   .todoLoding {
     top: 110px;
     left: 40%;
