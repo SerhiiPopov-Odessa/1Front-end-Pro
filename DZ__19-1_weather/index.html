@@ -14,40 +14,46 @@
 
 <body>
     <div class="weather-widget">
-        <div class="header">
-            <p class="city"></p>
-            <p class="date"></p>
+
+        <div class="centr">
+            <div class="header">
+                <p class="city"></p>
+                <p class="date"></p>
+            </div>
         </div>
 
-        <div class="time"><span>3:02</span> <span>PM</span></div>
+        <div class="centr">
+            <div class="time"><span>3:02</span> <span>PM</span></div>
 
-        <div class="details">
-            <p class="humidity">Humidity: <strong><span></span>%</strong></p>
-            <p class="pressure">Pressure: <strong><span></span> hPa</strong></p>
-            <p class="wind">Wind: <strong><span></span></strong></p>
+            <div class="details">
+                <p class="humidity">Humidity: <strong><span></span>%</strong></p>
+                <p class="pressure">Pressure: <strong><span></span> hPa</strong></p>
+                <p class="wind">Wind: <strong><span></span></strong></p>
+            </div>
         </div>
 
-        <div class="temp-box">
-            <div class="icon"><img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Погодная иконка"></div>
-            <div class="temp"><span>30</span>°C</div>
-            <div class="feels">Feels Like: <span>32</span>°C</div>
-            <div class="cloudy"><span></span></div>
+            <div class="temp-box">
+                <div class="icon"><img src="https://openweathermap.org/img/wn/01d@2x.png" alt="Погодная иконка"></div>
+                <div class="temp"><span>30</span>°C</div>
+                <div class="feels">Feels Like: <span>32</span>°C</div>
+                <div class="cloudy"><span></span></div>
+            </div>
+        <div class="centr">
+            <footer class="footerBtn">
+                <span>Jun 13 11:02 PM</span>
+                <button class="btnRestartFetch">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                        <g>
+                            <path fill="#ffffff"
+                                d="M223.151,159.114l-38.806-38.724c21.75-11.384,45.884-17.32,71.004-17.32   c84.594,0,153.417,68.676,153.417,153.091H486c0-61.478-23.992-119.277-67.556-162.749S316.958,26,255.349,26   c-45.859,0-89.552,13.167-127.306,38.208L93.421,29.659L45.936,206.498L223.151,159.114z" />
+                            <path fill="#ffffff"
+                                d="M288.849,352.886l38.806,38.724c-21.75,11.384-45.884,17.32-71.004,17.32   c-84.594,0-153.417-68.676-153.417-153.092H26c0,61.478,23.992,119.277,67.556,162.749C137.12,462.059,195.042,486,256.651,486   c45.859,0,89.552-13.167,127.306-38.208l34.623,34.549l47.484-176.839L288.849,352.886z" />
+                        </g>
+                    </svg>
+                </button>
+            </footer>
         </div>
-
-        <footer class="footerBtn">
-            <span>Jun 13 11:02 PM</span>
-            <button class="btnRestartFetch">
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
-                    viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-                    <g>
-                        <path fill="#ffffff"
-                            d="M223.151,159.114l-38.806-38.724c21.75-11.384,45.884-17.32,71.004-17.32   c84.594,0,153.417,68.676,153.417,153.091H486c0-61.478-23.992-119.277-67.556-162.749S316.958,26,255.349,26   c-45.859,0-89.552,13.167-127.306,38.208L93.421,29.659L45.936,206.498L223.151,159.114z" />
-                        <path fill="#ffffff"
-                            d="M288.849,352.886l38.806,38.724c-21.75,11.384-45.884,17.32-71.004,17.32   c-84.594,0-153.417-68.676-153.417-153.092H26c0,61.478,23.992,119.277,67.556,162.749C137.12,462.059,195.042,486,256.651,486   c45.859,0,89.552-13.167,127.306-38.208l34.623,34.549l47.484-176.839L288.849,352.886z" />
-                    </g>
-                </svg>
-            </button>
-        </footer>
     </div>
 
     <script>
