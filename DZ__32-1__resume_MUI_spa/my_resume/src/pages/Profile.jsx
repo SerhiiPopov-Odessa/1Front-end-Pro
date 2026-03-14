@@ -46,7 +46,7 @@ const Profile = () => {
           <li>
             <span className="w-28 h-6 shrink-0 font-semibold  bg-amber-300 rounded-2xl text-center">2026</span>
             <div className="">
-              <strong>Front-end Pro</strong>(
+              <strong>Front-end Pro </strong>(
               <a className="underline text-lime-700"
                 href="https://certificate.ithillel.ua/view/94027298"
                 target="_blank"
@@ -60,7 +60,7 @@ const Profile = () => {
           <li>
             <span className="w-28 h-6 shrink-0 font-semibold  bg-amber-300 rounded-2xl text-center">2025</span>
             <div className="">
-              <strong>Front-end Basic</strong>(
+              <strong>Front-end Basic </strong>(
               <a className="underline text-lime-700"
                 href="https://certificate.ithillel.ua/view/19171804"
                 target="_blank"
@@ -74,7 +74,7 @@ const Profile = () => {
           <li>
             <span className="w-28 h-6 shrink-0 font-semibold  bg-amber-300 rounded-2xl text-center">2015</span>
             <div className="">
-              <strong>1C (BAS) Programming</strong>(
+              <strong>1C (BAS) Programming </strong>(
               <a className="underline text-lime-700"
                 href="https://www.abissoft.com"
                 target="_blank"
@@ -88,7 +88,7 @@ const Profile = () => {
           <li>
             <span className="w-28 h-6 shrink-0 font-semibold  bg-amber-300 rounded-2xl text-center">2007 – 2009</span>
             <div className="">
-              <strong> Programmer. IT Step Academy</strong>(
+              <strong> Programmer. IT Step Academy </strong>(
               <a className="underline text-lime-700" href="https://od.itstep.org" target="_blank" rel="noreferrer">
                 od.itstep.org
               </a>
@@ -98,7 +98,7 @@ const Profile = () => {
           <li>
             <span className="w-28 h-6 shrink-0 font-semibold bg-amber-300 rounded-2xl text-center">2004 – 2009</span>
             <div className="">
-              <strong>Odessa State Agrarian University</strong>(
+              <strong>Odessa State Agrarian University </strong>(
               <a className="underline text-lime-700" href="https://osau.edu.ua" target="_blank" rel="noreferrer">
                 osau.edu.ua
               </a>

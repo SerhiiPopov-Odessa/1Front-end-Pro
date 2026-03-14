@@ -45,7 +45,7 @@ const Navigation = () => {
         /* className={styles.nav} */
         sx={{
           py: 1,
-          height: "35vh",
+          /* height: "45vh", */
           overflowY: "auto",
         }}
       >
