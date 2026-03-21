@@ -26,7 +26,7 @@ const Header = () => {
             <div className={styles.iconWrapper}>
               <Phone size={18} />
             </div>
-            <a href="tel:+380985558993" className={styles.contactText}>+38 098 555 89 93</a>
+            <a href="tel:+380985558993" className={styles.contactText}>XXX</a>
           </div>
 
           <div className={styles.contactItem}>
