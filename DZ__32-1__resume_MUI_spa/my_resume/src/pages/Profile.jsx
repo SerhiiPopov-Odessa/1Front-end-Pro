@@ -19,10 +19,10 @@ const Profile = () => {
 
       <section className="mb-4">
         <h3 className="text-xl text-fuchsia-700/75 font-semibold text-center bg-lime-600/50 w-fit mx-auto px-4  rounded-t-md ">Work Experience</h3>
-        <div class="w-full h-1 bg-lime-600/50 mb-2 xl:mb-4 rounded-xl"></div>
+        <div class="w-full h-1 bg-lime-600/50 mb-2 xl:mb-4 rounded-xl "></div>
         <div className="">
           <span className="font-semibold">Agronomist plant protection: </span>
-          <span className="font-semibold  bg-amber-300 rounded-2xl text-center px-4"> 2010 - 2023</span>
+          <span className="font-semibold  bg-amber-300 rounded-2xl text-center px-4 "> 2010 - 2023</span>
         </div>
         <ul className="">
           <li>
