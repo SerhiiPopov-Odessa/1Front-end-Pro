@@ -33,6 +33,10 @@ const navItems = [
     label: "Vanila JS",
     to: "/vanilaJS",
   },
+  {
+    label: "Practice Next.JS",
+    to: "/practiceNextJS",
+  },
   { label: "This", to: "/this" },
 ];
 

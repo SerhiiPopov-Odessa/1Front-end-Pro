@@ -9,6 +9,7 @@ import TodoThunk from '../pages/TodoThunk';
 import SwapiThunk from '../pages/SwapiThunk';
 import VanilaJS from '../pages/VanillaJS';
 import Testing from '../pages/Testing';
+import PracticeNextJS from '../pages/PracticeNextJS';
 import This from '../pages/This';
 
 const AppRouter = () => {
@@ -26,6 +27,7 @@ const AppRouter = () => {
           <Route path="todo-thunk" element={<TodoThunk />} />
           <Route path="swapi-thunk" element={<SwapiThunk />} />
           <Route path="vanilaJS" element={<VanilaJS />} />
+          <Route path="practiceNextJS" element={<PracticeNextJS />} />
           <Route path="this" element={<This />} />
         </Route>
       </Routes>
