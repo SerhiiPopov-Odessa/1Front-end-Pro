@@ -1,10 +1,11 @@
 "use client";
+
 import { notFound } from "next/navigation";
 import Button from "../components/UI/Button";
 import { useState } from "react";
 
 async function GetApiInfoFun() {
-  const res = await fetch("http://localhost:3000/api/data", {
+  const res = await fetch('/api/data', {
     cache: "no-store",
   });
   if (res.status === 404) notFound();
