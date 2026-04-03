@@ -32,7 +32,7 @@ function GetApiInfo() {
   return (
     <section className="text-center ">
       <Button  title="Get request" onClick={clickHandler}>
-        Get request fetch local API
+        Get request fetch local /api/data
       </Button>
 
       {loading && <p>Loading...</p>}
