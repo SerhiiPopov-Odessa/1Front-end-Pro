@@ -3,10 +3,11 @@ import { persist, devtools } from 'zustand/middleware'
 import { v4 as uuidv4 } from 'uuid';
 
 export const useTodos = create(devtools(persist((set, get) => ({
-    todos: [
+    /* todos: [
         { id: 1, title: 'Learn JS', completed: true },
         { id: 2, title: 'Learn React', completed: true },
-    ],
+    ], */
+    todos: [],
     loading: false,
     error: null,
     // 1 вариант

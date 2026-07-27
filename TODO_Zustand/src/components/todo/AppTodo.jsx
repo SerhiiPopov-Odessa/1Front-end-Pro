@@ -18,13 +18,9 @@ const AppTodo = () => {
 
    const completedTodos = todos.filter(todo => todo.completed);
 
-    /* const dispatch = useDispatch();
-    const { todos, status, error } = useSelector((state) => state.todos)
-     */
-
-    useEffect(() => {
+   /*  useEffect(() => {
         fetchTodos();
-    }, []);
+    }, []); */
 
     return (
         <div className={styles.appTodoContainer}>
