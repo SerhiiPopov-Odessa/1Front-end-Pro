@@ -26,8 +26,8 @@ const navItems = [
     to: "/todo-thunk",
   },
   {
-    label: "SWAPI React Redux-Thunk",
-    to: "/swapi-thunk",
+    label: "Todo React Zustand",
+    to: "/todoZustand",
   },
   {
     label: "Vanila JS",

@@ -6,7 +6,7 @@ import Practice from '../pages/Practice';
 import Booking from '../pages/Booking';
 import TodoSaga from '../pages/TodoSaga';
 import TodoThunk from '../pages/TodoThunk';
-import SwapiThunk from '../pages/SwapiThunk';
+import TodoZustand from '../pages/TodoZustand';
 import VanilaJS from '../pages/VanillaJS';
 import Testing from '../pages/Testing';
 import PracticeNextJS from '../pages/PracticeNextJS';
@@ -25,7 +25,7 @@ const AppRouter = () => {
           <Route path="todo-saga" element={<TodoSaga />} />
           <Route path="testing" element={<Testing />} />
           <Route path="todo-thunk" element={<TodoThunk />} />
-          <Route path="swapi-thunk" element={<SwapiThunk />} />
+          <Route path="todoZustand" element={<TodoZustand />} />
           <Route path="vanilaJS" element={<VanilaJS />} />
           <Route path="practiceNextJS" element={<PracticeNextJS />} />
           <Route path="this" element={<This />} />
