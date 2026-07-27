@@ -1,0 +1,32 @@
+.appTodoContainer {
+  position: relative;
+  text-align: center;
+  color: blueviolet;
+  padding: 0.7rem;
+}
+
+
+.todoError {
+  color: darkred;
+}
+
+.todoLoding {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 105px;
+  color: rgb(255, 145, 0);
+}
+
+@media (max-width:704px) {
+  .todoLoding {
+    /* top: 80px; */
+    top: 100px;
+  }
+}
+@media (max-width:576px) {
+  .todoLoding {
+    top: 110px;
+    left: 40%;
+  }
+}
