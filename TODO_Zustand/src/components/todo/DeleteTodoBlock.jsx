@@ -3,9 +3,11 @@ import clsx from "clsx";
 import Button from '../UI/Button';
 import { useTodos } from '../../store';
 import { useShallow } from "zustand/react/shallow";
+import { useRef } from "react";
 
 
 function DeleteTodoBlock() {
+  const controllerRef = useRef(null);
   const {deleteCompletedTodos, fetchTodos, resetTodos, todos,} = useTodos(
   useShallow((state) => ({
     deleteCompletedTodos: state.deleteCompletedTodos,
@@ -18,11 +20,25 @@ function DeleteTodoBlock() {
 const hasCompletedTodos = todos.some(todo => todo.completed); // some() прекращает поиск,
 //  как только находит первый подходящий элемент, поэтому он эффективнее, если не нужен 
 // сам список выполненных задач.
+
+const handleClickFetch = (e) =>{
+   e.stopPropagation();
+
+  // отменяем предыдущий запрос
+  controllerRef.current?.abort();
+  const controller = new AbortController();
+  controllerRef.current = controller;
+  fetchTodos(controller.signal).finally(() => {
+    if (controllerRef.current === controller) {
+      controllerRef.current = null;
+    }
+  })
+}
   
   return (
     <div className="w-full sm:w-[95%] xl:w-[60%] mx-auto flex items-center justify-center space-x-4 mb-4">
       <Button title="Reset Todos" disabled = {!todos.length} onClick={e => { e.stopPropagation(); resetTodos() }}><FcDeleteDatabase /></Button>
-      <Button title="Fetch Requested Todos" onClick={e => { e.stopPropagation(); fetchTodos() }}><FcAddDatabase /></Button>
+      <Button title="Fetch Requested Todos" onClick={handleClickFetch}><FcAddDatabase /></Button>
       <Button title="Clear Completed Todos" disabled={!hasCompletedTodos} 
       onClick={e => { e.stopPropagation(); deleteCompletedTodos() }}
       >Delete completed</Button>

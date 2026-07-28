@@ -53,29 +53,34 @@ export const useTodos = create(devtools(persist((set, get) => ({
         )
     })),
 
-    fetchTodos: async () => {
+    fetchTodos: async (signal) => {
         set({ loading: true });
 
         try {
-            const res = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10");
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos?_limit=10",
+                { signal }
+            );
 
             if (!res.ok) {
-                throw new Error("Failed to fetch! Try again.");
+                throw new Error("Failed to fetch!");
             }
 
             const todos = await res.json();
 
             set({
                 todos,
-                error: null
+                error: null,
             });
         } catch (error) {
+            if (error.name === "AbortError") return;
+
             set({
-                error: error.message
+                error: error.message,
             });
         } finally {
             set({
-                loading: false
+                loading: false,
             });
         }
     }
