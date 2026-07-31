@@ -8,6 +8,7 @@ import { useRef } from "react";
 
 function DeleteTodoBlock() {
   const controllerRef = useRef(null);
+  
   const {deleteCompletedTodos, fetchTodos, resetTodos, todos,} = useTodos(
   useShallow((state) => ({
     deleteCompletedTodos: state.deleteCompletedTodos,

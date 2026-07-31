@@ -9,16 +9,13 @@ import { useTodos } from "../../store";
 import { useShallow } from "zustand/react/shallow";
 
 const AppTodo = () => {
-  const { todos, loading, error, fetchTodos } = useTodos(
+  const { loading, error, fetchTodos } = useTodos(
     useShallow((state) => ({
-      todos: state.todos,
       loading: state.loading,
       error: state.error,
       fetchTodos: state.fetchTodos,
     })),
   );
-
-  const completedTodos = todos.filter((todo) => todo.completed);
 
   /* useEffect(() => {
     const controller = new AbortController();
@@ -37,12 +34,12 @@ const AppTodo = () => {
         https://jsonplaceholder.typicode.com/todos
       </p>
       <TodoForm />
-      <DeleteTodoBlock completedTodos={completedTodos} /* todos={todos} */ />
+      <DeleteTodoBlock />
       <FilterTodo />
       {/* {!!todos.length && <DeleteTodoBlock completedTodos={completedTodos} />} */}
       {loading && <h2 className={styles.todoLoding}>Loading ...</h2>}
       {error && <h2 className={styles.todoError}> Error: {error}</h2>}
-      <TodoList /* todos={todos} */ />
+      <TodoList />
       <TotalTodos />
     </div>
   );
