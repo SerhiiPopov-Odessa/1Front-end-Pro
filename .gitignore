@@ -16,3 +16,6 @@ node_modules/
 # Игнорировать файлы с расширением .tmp, кроме одного конкретного
 # *.tmp
 # !important.tmp
+# rar zip
+*.rar
+*.zip
