@@ -3,3 +3,13 @@
 body {
   font-family: 'Roboto', Arial, sans-serif;
 }
+
+@keyframes chat-bounce {
+  0%, 12%, 100% { transform: translateY(0); }
+  3% { transform: translateY(-14px); }
+  6% { transform: translateY(0); }
+  9% { transform: translateY(-7px); }
+}
+.chat-bounce { animation: chat-bounce 6s ease-in-out 2s infinite; }
+.chat-bounce:hover { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .chat-bounce { animation: none; } }
