@@ -99,7 +99,7 @@ const ChatWidget = ({ inline = false }) => {
         <div role="dialog" aria-label={t.title}
           onKeyDown={(e) => { if (e.key === 'Escape') setOpen(false); }}
           className="fixed bottom-20 right-4 z-50 flex h-[28rem] max-h-[70dvh] md:bottom-32 md:max-h-[65dvh] w-[22rem] max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-lg border-2 border-[rgb(22,56,83)] bg-white shadow-xl">
-          <div className="flex items-center justify-between bg-[rgb(22,56,83)] px-3 py-2 text-white">
+          <div className="flex items-center justify-between bg-[rgb(22,83,23)] px-3 py-2 text-white">
             <span className="text-sm font-semibold">{t.title}</span>
             <span className="flex items-center gap-3">
               {messages.length > 0 && (
