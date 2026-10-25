@@ -2,10 +2,14 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Navigation from './Navigation';
 import clsx from "clsx";
+import { useState } from 'react';
 import ChatWidget from './ChatWidget';
+import { InlineContext } from '../chat/InlineContext';
 
 const Layout = () => {
+  const [inlineMounted, setInlineMounted] = useState(false);
   return (
+    <InlineContext.Provider value={setInlineMounted}>
     <div className="flex flex-col sm:flex-row  p-4 max-sm:space-y-2 sm:space-x-2  min-h-[100dvh]">
       <aside className=" sm:w-2/5 xl:w-2/8  p-4 rounded-lg bg-[rgb(22,56,83)] text-[#FFFFFF] ">
         <Header />
@@ -15,8 +19,9 @@ const Layout = () => {
       <main className="sm:w-3/5 xl:w-6/8  border-[rgb(22,56,83)] border-2 rounded-lg ">
         <Outlet />
       </main>
-      <ChatWidget />
+      {!inlineMounted && <ChatWidget />}
     </div>
+    </InlineContext.Provider>
   );
 };
 

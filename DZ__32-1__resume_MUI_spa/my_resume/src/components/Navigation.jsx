@@ -37,6 +37,10 @@ const navItems = [
     label: "Practice Next.JS",
     to: "/practiceNextJS",
   },
+   {
+    label: "Course \"AI Agents for developer\" ",
+    to: "/AIAgents",
+  },
   { label: "This", to: "/this" },
 ];
 

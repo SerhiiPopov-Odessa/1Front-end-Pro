@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { MessageCircle, X, Send, Square, RotateCcw, Plus } from 'lucide-react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
+import { X, Send, Square, RotateCcw, Plus } from 'lucide-react';
 import { CHAT_API_URL, ChatError, streamChat } from '../chat/api';
 import { STRINGS, detectLocale } from '../chat/i18n';
+import { InlineContext } from '../chat/InlineContext';
 
 // Сообщение: { role, content, sources?, searching?, stopped?, failed? }
 const patchLast = (setMessages, patch) =>
@@ -12,7 +13,13 @@ const patchLast = (setMessages, patch) =>
     return next;
   });
 
-const ChatWidget = () => {
+const ChatWidget = ({ inline = false }) => {
+  const setInlineMounted = useContext(InlineContext);
+  useEffect(() => {
+    if (!inline) return undefined;
+    setInlineMounted(true);
+    return () => setInlineMounted(false);
+  }, [inline, setInlineMounted]);
   const locale = useMemo(() => detectLocale(), []);
   const t = STRINGS[locale];
 
@@ -153,8 +160,18 @@ const ChatWidget = () => {
         </div>
       )}
       <button type="button" aria-label={open ? t.close : t.open} onClick={() => setOpen((o) => !o)}
-        className={'fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center md:h-24 md:w-24 justify-center rounded-full bg-[rgb(22,56,83)] text-white shadow-lg' + (open ? '' : ' chat-bounce')}>
-        <MessageCircle className="h-[22px] w-[22px] md:h-11 md:w-11" />
+        className={(inline ? 'relative mx-auto ' : 'fixed bottom-4 right-4 ') + 'z-50 block h-16 w-16 md:h-24 md:w-24 appearance-none border-0 bg-transparent p-0 shadow-none outline-none focus:outline-none focus-visible:outline-none' + (open ? '' : ' chat-bounce')}>
+        <svg viewBox="0 0 100 100" className="h-full w-full overflow-visible drop-shadow-lg" aria-hidden="true">
+          <defs>
+            <linearGradient id="chat-grad" x1="0" y1="0" x2="1" y2="0.2">
+              <stop offset="0" stopColor="#2f3dfb" />
+              <stop offset="0.55" stopColor="#9626f4" />
+              <stop offset="1" stopColor="#d9406a" />
+            </linearGradient>
+          </defs>
+          <path d="M50 6C25 6 6 23 6 45s19 39 44 39c4 0 8-.4 11.6-1.2L84 94 78 72c9-7 16-17 16-27C94 23 75 6 50 6Z" fill="url(#chat-grad)" />
+          <text x="50" y="46" textAnchor="middle" dominantBaseline="central" fill="#fff" fontSize="34" fontWeight="700" fontFamily="system-ui, sans-serif">AI</text>
+        </svg>
       </button>
     </>
   );

@@ -10,6 +10,7 @@ import TodoZustand from '../pages/TodoZustand';
 import VanilaJS from '../pages/VanillaJS';
 import Testing from '../pages/Testing';
 import PracticeNextJS from '../pages/PracticeNextJS';
+import AIAgents from '../pages/AIAgents';
 import This from '../pages/This';
 
 const AppRouter = () => {
@@ -28,6 +29,7 @@ const AppRouter = () => {
           <Route path="todoZustand" element={<TodoZustand />} />
           <Route path="vanilaJS" element={<VanilaJS />} />
           <Route path="practiceNextJS" element={<PracticeNextJS />} />
+          <Route path="AIAgents" element={<AIAgents />} />
           <Route path="this" element={<This />} />
         </Route>
       </Routes>
